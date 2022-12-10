@@ -23,18 +23,18 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Blj-AW-FVC">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go0-Jy-c1G">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go0-Jy-c1G">
+                                                <rect key="frame" x="10" y="0.0" width="373" height="128"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="go0-Jy-c1G" firstAttribute="leading" secondItem="Blj-AW-FVC" secondAttribute="leading" id="Ium-T2-foz"/>
+                                            <constraint firstItem="go0-Jy-c1G" firstAttribute="leading" secondItem="Blj-AW-FVC" secondAttribute="leading" constant="10" id="Ium-T2-foz"/>
                                             <constraint firstAttribute="bottom" secondItem="go0-Jy-c1G" secondAttribute="bottom" id="Z94-b9-TiI"/>
-                                            <constraint firstAttribute="trailing" secondItem="go0-Jy-c1G" secondAttribute="trailing" id="dHE-GP-FYy"/>
+                                            <constraint firstAttribute="trailing" secondItem="go0-Jy-c1G" secondAttribute="trailing" constant="10" id="dHE-GP-FYy"/>
                                             <constraint firstItem="go0-Jy-c1G" firstAttribute="top" secondItem="Blj-AW-FVC" secondAttribute="top" id="duy-cJ-aIm"/>
                                         </constraints>
                                     </view>
