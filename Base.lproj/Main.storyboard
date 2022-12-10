@@ -270,7 +270,25 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="Ed4-Hr-qJs" id="tWc-4A-Gg1"/>
+                        <outlet property="clearButton" destination="opi-UE-xC9" id="h3U-TH-lC8"/>
+                        <outlet property="decimalButton" destination="bKl-Qz-4zV" id="91H-TK-ATm"/>
+                        <outlet property="divideButton" destination="GD1-UH-HLV" id="zsG-6R-KPc"/>
+                        <outlet property="equalButton" destination="xjb-Ga-z8Z" id="Le8-6S-qUV"/>
+                        <outlet property="minusButton" destination="O2p-ks-qif" id="imf-Un-WgI"/>
+                        <outlet property="multiplyButton" destination="zSA-lB-luS" id="Aig-Yk-Ubq"/>
+                        <outlet property="negateButton" destination="GEp-jw-kFZ" id="Qc4-QM-PCp"/>
+                        <outlet property="persentageButton" destination="Ir0-iC-xhb" id="fOg-jb-uMG"/>
                         <outlet property="pinpadButton0" destination="ikv-3v-CEY" id="lpD-K9-Fdz"/>
+                        <outlet property="pinpadButton1" destination="slV-HQ-RyU" id="N7t-N5-kJt"/>
+                        <outlet property="pinpadButton2" destination="vlo-TB-U68" id="uqv-8b-yXK"/>
+                        <outlet property="pinpadButton3" destination="YFP-BH-u8o" id="uzA-Hz-0j6"/>
+                        <outlet property="pinpadButton4" destination="WDy-x6-G0S" id="95z-q7-qv7"/>
+                        <outlet property="pinpadButton5" destination="d7z-A6-Dlh" id="zIe-Wb-KD5"/>
+                        <outlet property="pinpadButton6" destination="xpO-ZP-wa6" id="Csh-YH-G5p"/>
+                        <outlet property="pinpadButton7" destination="tlK-kB-sXE" id="5YW-C3-XyP"/>
+                        <outlet property="pinpadButton8" destination="jfh-EQ-7va" id="31z-Ul-9KK"/>
+                        <outlet property="pinpadButton9" destination="hnq-Dv-NRX" id="e3Y-Ls-EN7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
