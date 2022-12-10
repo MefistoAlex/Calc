@@ -17,11 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qHc-hC-u3q">
-                                <rect key="frame" x="0.0" y="324.33333333333326" width="393" height="493.66666666666674"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qHc-hC-u3q">
+                                <rect key="frame" x="0.0" y="324.33333333333326" width="393" height="631.66666666666674"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="61H-Hq-Gze">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="90.666666666666671"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Blj-AW-FVC">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="61H-Hq-Gze">
+                                        <rect key="frame" x="0.0" y="137.99999999999997" width="393" height="90.666666666666657"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opi-UE-xC9">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="90.666666666666671"/>
@@ -66,8 +70,8 @@
                                             <constraint firstItem="GD1-UH-HLV" firstAttribute="width" secondItem="GD1-UH-HLV" secondAttribute="height" multiplier="1:1" id="oPq-yT-ifY"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9iC-Zf-46H">
-                                        <rect key="frame" x="0.0" y="100.66666666666669" width="393" height="90.666666666666686"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9iC-Zf-46H">
+                                        <rect key="frame" x="0.0" y="238.66666666666666" width="393" height="90.666666666666657"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlK-kB-sXE">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="90.666666666666671"/>
@@ -112,8 +116,8 @@
                                             <constraint firstItem="zSA-lB-luS" firstAttribute="width" secondItem="zSA-lB-luS" secondAttribute="height" multiplier="1:1" id="tRA-iQ-Ocd"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CyY-0O-MBa">
-                                        <rect key="frame" x="0.0" y="201.33333333333331" width="393" height="91"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CyY-0O-MBa">
+                                        <rect key="frame" x="0.0" y="339.33333333333326" width="393" height="91"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpO-ZP-wa6">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="91"/>
@@ -158,8 +162,8 @@
                                             <constraint firstItem="d7z-A6-Dlh" firstAttribute="width" secondItem="d7z-A6-Dlh" secondAttribute="height" multiplier="1:1" id="qQK-O8-GQV"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eXW-XV-oci">
-                                        <rect key="frame" x="0.0" y="302.33333333333331" width="393" height="90.666666666666686"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eXW-XV-oci">
+                                        <rect key="frame" x="0.0" y="440.33333333333326" width="393" height="90.666666666666629"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFP-BH-u8o">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="90.666666666666671"/>
@@ -204,8 +208,8 @@
                                             <constraint firstItem="Ed4-Hr-qJs" firstAttribute="width" secondItem="Ed4-Hr-qJs" secondAttribute="height" multiplier="1:1" id="inJ-Fa-TW2"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fk8-ti-e42">
-                                        <rect key="frame" x="0.0" y="403.00000000000006" width="393" height="90.666666666666686"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fk8-ti-e42">
+                                        <rect key="frame" x="0.0" y="541" width="393" height="90.666666666666629"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikv-3v-CEY">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="90.666666666666671"/>
@@ -268,6 +272,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
