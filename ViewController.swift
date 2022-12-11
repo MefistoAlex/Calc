@@ -8,10 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    // MARK: - IBOutlets
+
     @IBOutlet var lcdDisplay: UIView!
     @IBOutlet var displayLabel: UILabel!
-    
-    
+
     @IBOutlet var pinpadButton0: UIButton!
     @IBOutlet var pinpadButton1: UIButton!
     @IBOutlet var pinpadButton2: UIButton!
@@ -35,10 +36,14 @@ class ViewController: UIViewController {
 
     @IBOutlet var decimalButton: UIButton!
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         decotrateView()
     }
+
+    // MARK: - Privates
 
     private func decotrateView() {
         let backgroundColor: UIColor = .black
