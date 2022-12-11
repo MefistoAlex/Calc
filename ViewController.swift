@@ -35,6 +35,19 @@ class ViewController: UIViewController {
     @IBOutlet var addButton: UIButton!
     @IBOutlet var minusButton: UIButton!
 
+    private var currentTheme: CalculatorTheme {
+        CalculatorTheme(
+            backgroundColor: "#000000",
+            diaplayLableColor: "#FFFFFF",
+            pinpadTintColor: "#333333",
+            pinpadTitleColor: "#FFFFFF",
+            operationsTintColor: "#ff9f0a",
+            operationsTitleColor: "#FFFFFF",
+            extraFunctionsTintColor: "#a6a6a6",
+            extraFunctionsTitleColor: "#FFFFFF"
+        )
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -45,34 +58,45 @@ class ViewController: UIViewController {
     // MARK: - Privates
 
     private func decotrateView() {
-        let backgroundColor: UIColor = .black
-        let diaplayLableColor: UIColor = .white
+        //view colors
+        let backgroundColor = UIColor(hex: currentTheme.backgroundColor)
+        let diaplayLableColor = UIColor(hex: currentTheme.diaplayLableColor)
+        //pinpad colors
+        let pinpadTintColor = UIColor(hex: currentTheme.pinpadTintColor)
+        let pinpadTitleColor = UIColor(hex: currentTheme.pinpadTitleColor)
+        // operations colors
+        let operationsTintColor = UIColor(hex: currentTheme.operationsTintColor)
+        let operationsTitleColor = UIColor(hex: currentTheme.operationsTitleColor)
+        //extra func colors
+        let extraFunctionsTintColor = UIColor(hex: currentTheme.extraFunctionsTintColor)
+        let extraFunctionsTitleColor = UIColor(hex: currentTheme.extraFunctionsTitleColor)
+
+        //view setting
         view.backgroundColor = backgroundColor
         lcdDisplay.backgroundColor = .clear
         displayLabel.textColor = diaplayLableColor
-        decoratePinPad()
-        decorateOperations()
-        decorateExtraFunctions()
+        
+        //buttons setting
+        decoratePinPad(tintColor: pinpadTintColor, titleColor: pinpadTitleColor)
+        decorateOperations(tintColor: operationsTintColor, titleColor: operationsTitleColor)
+        decorateExtraFunctions(tintColor: extraFunctionsTintColor, titleColor: extraFunctionsTitleColor)
+        
     }
 
-    private func decorateButton(_ button: UIButton, tintColor: UIColor, titleColor: UIColor) {
+    private func decorateButton(_ button: UIButton, tintColor: UIColor?, titleColor: UIColor?) {
         button.setBackgroundImage(UIImage(named: "Circle"), for: .normal)
         button.tintColor = tintColor
         button.setTitleColor(titleColor, for: .normal)
         button.backgroundColor = .clear
     }
 
-    private func decorateExtraFunctions() {
-        let tintColor: UIColor = .lightGray
-        let titleColor: UIColor = .white
+    private func decorateExtraFunctions(tintColor: UIColor?, titleColor: UIColor?) {
         decorateButton(clearButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(negateButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(persentageButton, tintColor: tintColor, titleColor: titleColor)
     }
 
-    private func decorateOperations() {
-        let tintColor: UIColor = .orange
-        let titleColor: UIColor = .white
+    private func decorateOperations(tintColor: UIColor?, titleColor: UIColor?) {
         decorateButton(equalButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(divideButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(multiplyButton, tintColor: tintColor, titleColor: titleColor)
@@ -80,9 +104,7 @@ class ViewController: UIViewController {
         decorateButton(minusButton, tintColor: tintColor, titleColor: titleColor)
     }
 
-    private func decoratePinPad() {
-        let tintColor: UIColor = .darkGray
-        let titleColor: UIColor = .white
+    private func decoratePinPad(tintColor: UIColor?, titleColor: UIColor?) {
         decorateButton(pinpadButton0, tintColor: tintColor, titleColor: titleColor)
         decorateButton(pinpadButton1, tintColor: tintColor, titleColor: titleColor)
         decorateButton(pinpadButton2, tintColor: tintColor, titleColor: titleColor)
