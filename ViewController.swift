@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var lcdDisplay: UIView!
     @IBOutlet var displayLabel: UILabel!
-
+    // pin pad buttons
     @IBOutlet var pinpadButton0: UIButton!
     @IBOutlet var pinpadButton1: UIButton!
     @IBOutlet var pinpadButton2: UIButton!
@@ -23,18 +23,17 @@ class ViewController: UIViewController {
     @IBOutlet var pinpadButton7: UIButton!
     @IBOutlet var pinpadButton8: UIButton!
     @IBOutlet var pinpadButton9: UIButton!
-
+    @IBOutlet var decimalButton: UIButton!
+    // extra functions
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var negateButton: UIButton!
     @IBOutlet var persentageButton: UIButton!
-
+    // operations
     @IBOutlet var equalButton: UIButton!
     @IBOutlet var divideButton: UIButton!
     @IBOutlet var multiplyButton: UIButton!
     @IBOutlet var addButton: UIButton!
     @IBOutlet var minusButton: UIButton!
-
-    @IBOutlet var decimalButton: UIButton!
 
     // MARK: - Lifecycle
 
