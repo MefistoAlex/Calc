@@ -37,33 +37,49 @@ class ViewController: UIViewController {
     }
 
     private func decotrateView() {
-        // pinpad
-        decorateButton(pinpadButton0)
-        decorateButton(pinpadButton1)
-        decorateButton(pinpadButton2)
-        decorateButton(pinpadButton3)
-        decorateButton(pinpadButton4)
-        decorateButton(pinpadButton5)
-        decorateButton(pinpadButton6)
-        decorateButton(pinpadButton7)
-        decorateButton(pinpadButton8)
-        decorateButton(pinpadButton9)
-        decorateButton(decimalButton)
-
-        // operations
-        decorateButton(clearButton)
-        decorateButton(negateButton)
-        decorateButton(persentageButton)
-        decorateButton(equalButton)
-        decorateButton(divideButton)
-        decorateButton(multiplyButton)
-        decorateButton(addButton)
-        decorateButton(minusButton)
+        decoratePinPad()
+        decorateOperations()
+        decorateExtraFunctions()
     }
 
-    private func decorateButton(_ button: UIButton) {
+    private func decorateButton(_ button: UIButton, tintColor: UIColor, titleColor: UIColor) {
         button.setBackgroundImage(UIImage(named: "Circle"), for: .normal)
-        button.tintColor = .orange
+        button.tintColor = tintColor
+        button.setTitleColor(titleColor, for: .normal)
         button.backgroundColor = .clear
+    }
+
+    private func decorateExtraFunctions() {
+        let tintColor: UIColor = .darkGray
+        let titleColor: UIColor = .white
+        decorateButton(clearButton, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(negateButton, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(persentageButton, tintColor: tintColor, titleColor: titleColor)
+    }
+
+    private func decorateOperations() {
+        let tintColor: UIColor = .darkGray
+        let titleColor: UIColor = .white
+        decorateButton(equalButton, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(divideButton, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(multiplyButton, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(addButton, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(minusButton, tintColor: tintColor, titleColor: titleColor)
+    }
+    
+    private func decoratePinPad() {
+        let tintColor: UIColor = .darkGray
+        let titleColor: UIColor = .white
+        decorateButton(pinpadButton0, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton1, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton2, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton3, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton4, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton5, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton6, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton7, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton8, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton9, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(decimalButton, tintColor: tintColor, titleColor: titleColor)
     }
 }
