@@ -148,7 +148,7 @@ class CalcViewController: UIViewController {
     @IBAction private func addPressed() {
     }
 
-    @IBAction private func minusPressed() {
+    @IBAction private func subtractPressed() {
     }
 
     @IBAction private func multiplyPressed() {
@@ -166,5 +166,6 @@ class CalcViewController: UIViewController {
     }
 
     @IBAction private func numberPressed(_ sender: UIButton) {
+        print(sender.tag) 
     }
 }
