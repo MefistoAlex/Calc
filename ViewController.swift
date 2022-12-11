@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet var divideButton: UIButton!
     @IBOutlet var multiplyButton: UIButton!
     @IBOutlet var addButton: UIButton!
-    @IBOutlet var minusButton: UIButton!
+    @IBOutlet var subtractButton: UIButton!
 
     private var currentTheme: CalculatorTheme {
         CalculatorTheme(
@@ -83,11 +83,17 @@ class ViewController: UIViewController {
         
     }
 
-    private func decorateButton(_ button: UIButton, tintColor: UIColor?, titleColor: UIColor?) {
-        button.setBackgroundImage(UIImage(named: "Circle"), for: .normal)
+    private func decorateButton(_ button: UIButton, tintColor: UIColor?, titleColor: UIColor?, isSliced:Bool = false) {
+        if isSliced {
+            button.setBackgroundImage(UIImage(named: "CircleSliced"), for: .normal)
+        } else {
+            button.setBackgroundImage(UIImage(named: "Circle"), for: .normal)
+        }
         button.tintColor = tintColor
         button.setTitleColor(titleColor, for: .normal)
         button.backgroundColor = .clear
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
+        
     }
 
     private func decorateExtraFunctions(tintColor: UIColor?, titleColor: UIColor?) {
@@ -101,11 +107,11 @@ class ViewController: UIViewController {
         decorateButton(divideButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(multiplyButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(addButton, tintColor: tintColor, titleColor: titleColor)
-        decorateButton(minusButton, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(subtractButton, tintColor: tintColor, titleColor: titleColor)
     }
 
     private func decoratePinPad(tintColor: UIColor?, titleColor: UIColor?) {
-        decorateButton(pinpadButton0, tintColor: tintColor, titleColor: titleColor)
+        decorateButton(pinpadButton0, tintColor: tintColor, titleColor: titleColor, isSliced: true)
         decorateButton(pinpadButton1, tintColor: tintColor, titleColor: titleColor)
         decorateButton(pinpadButton2, tintColor: tintColor, titleColor: titleColor)
         decorateButton(pinpadButton3, tintColor: tintColor, titleColor: titleColor)
