@@ -8,6 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var lcdDisplay: UIView!
+    @IBOutlet var displayLabel: UILabel!
+    
+    
     @IBOutlet var pinpadButton0: UIButton!
     @IBOutlet var pinpadButton1: UIButton!
     @IBOutlet var pinpadButton2: UIButton!
@@ -37,6 +41,11 @@ class ViewController: UIViewController {
     }
 
     private func decotrateView() {
+        let backgroundColor: UIColor = .black
+        let diaplayLableColor: UIColor = .white
+        view.backgroundColor = backgroundColor
+        lcdDisplay.backgroundColor = .clear
+        displayLabel.textColor = diaplayLableColor
         decoratePinPad()
         decorateOperations()
         decorateExtraFunctions()
@@ -50,7 +59,7 @@ class ViewController: UIViewController {
     }
 
     private func decorateExtraFunctions() {
-        let tintColor: UIColor = .darkGray
+        let tintColor: UIColor = .lightGray
         let titleColor: UIColor = .white
         decorateButton(clearButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(negateButton, tintColor: tintColor, titleColor: titleColor)
@@ -58,7 +67,7 @@ class ViewController: UIViewController {
     }
 
     private func decorateOperations() {
-        let tintColor: UIColor = .darkGray
+        let tintColor: UIColor = .orange
         let titleColor: UIColor = .white
         decorateButton(equalButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(divideButton, tintColor: tintColor, titleColor: titleColor)
@@ -66,7 +75,7 @@ class ViewController: UIViewController {
         decorateButton(addButton, tintColor: tintColor, titleColor: titleColor)
         decorateButton(minusButton, tintColor: tintColor, titleColor: titleColor)
     }
-    
+
     private func decoratePinPad() {
         let tintColor: UIColor = .darkGray
         let titleColor: UIColor = .white
