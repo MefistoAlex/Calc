@@ -103,7 +103,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9iC-Zf-46H">
                                         <rect key="frame" x="0.0" y="238.99999999999997" width="393" height="90.666666666666657"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlK-kB-sXE">
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlK-kB-sXE">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
@@ -115,7 +115,7 @@
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PSu-kk-ZaX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-EQ-7va">
+                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-EQ-7va">
                                                 <rect key="frame" x="100.66666666666669" y="0.0" width="91" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
@@ -127,7 +127,7 @@
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="548-pC-hgu"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnq-Dv-NRX">
+                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnq-Dv-NRX">
                                                 <rect key="frame" x="201.66666666666666" y="0.0" width="90.666666666666657" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
@@ -162,19 +162,19 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CyY-0O-MBa">
                                         <rect key="frame" x="0.0" y="339.66666666666663" width="393" height="90.666666666666686"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpO-ZP-wa6">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpO-ZP-wa6">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xpO-ZP-wa6" secondAttribute="height" multiplier="1:1" id="AAA-ig-fSb"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="6"/>
+                                                <state key="normal" title="4"/>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pjf-1j-Xjq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7z-A6-Dlh">
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7z-A6-Dlh">
                                                 <rect key="frame" x="100.66666666666669" y="0.0" width="91" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
@@ -186,14 +186,14 @@
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A5s-jh-v7b"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDy-x6-G0S">
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDy-x6-G0S">
                                                 <rect key="frame" x="201.66666666666666" y="0.0" width="90.666666666666657" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="WDy-x6-G0S" secondAttribute="height" multiplier="1:1" id="92Q-bb-Atc"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="4"/>
+                                                <state key="normal" title="6"/>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ObH-M7-N6l"/>
                                                 </connections>
@@ -221,19 +221,19 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eXW-XV-oci">
                                         <rect key="frame" x="0.0" y="440.33333333333337" width="393" height="90.666666666666629"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFP-BH-u8o">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFP-BH-u8o">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="YFP-BH-u8o" secondAttribute="height" multiplier="1:1" id="A7h-vt-Rnr"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="3"/>
+                                                <state key="normal" title="1"/>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ITI-Vm-bMK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlo-TB-U68">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlo-TB-U68">
                                                 <rect key="frame" x="100.66666666666669" y="0.0" width="91" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
@@ -245,14 +245,14 @@
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q5P-Y3-uJt"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slV-HQ-RyU">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slV-HQ-RyU">
                                                 <rect key="frame" x="201.66666666666666" y="0.0" width="90.666666666666657" height="90.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="slV-HQ-RyU" secondAttribute="height" multiplier="1:1" id="Tj6-oL-07C"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="1"/>
+                                                <state key="normal" title="3"/>
                                                 <connections>
                                                     <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Q0-87-DeJ"/>
                                                 </connections>
@@ -345,16 +345,16 @@
                         <outlet property="multiplyButton" destination="zSA-lB-luS" id="Aig-Yk-Ubq"/>
                         <outlet property="negateButton" destination="GEp-jw-kFZ" id="Qc4-QM-PCp"/>
                         <outlet property="persentageButton" destination="Ir0-iC-xhb" id="fOg-jb-uMG"/>
-                        <outlet property="pinpadButton0" destination="ikv-3v-CEY" id="lpD-K9-Fdz"/>
-                        <outlet property="pinpadButton1" destination="slV-HQ-RyU" id="N7t-N5-kJt"/>
-                        <outlet property="pinpadButton2" destination="vlo-TB-U68" id="uqv-8b-yXK"/>
-                        <outlet property="pinpadButton3" destination="YFP-BH-u8o" id="uzA-Hz-0j6"/>
-                        <outlet property="pinpadButton4" destination="WDy-x6-G0S" id="95z-q7-qv7"/>
-                        <outlet property="pinpadButton5" destination="d7z-A6-Dlh" id="zIe-Wb-KD5"/>
-                        <outlet property="pinpadButton6" destination="xpO-ZP-wa6" id="Csh-YH-G5p"/>
-                        <outlet property="pinpadButton7" destination="tlK-kB-sXE" id="5YW-C3-XyP"/>
-                        <outlet property="pinpadButton8" destination="jfh-EQ-7va" id="31z-Ul-9KK"/>
-                        <outlet property="pinpadButton9" destination="hnq-Dv-NRX" id="e3Y-Ls-EN7"/>
+                        <outlet property="pinpadButton0" destination="ikv-3v-CEY" id="vpl-Th-SDj"/>
+                        <outlet property="pinpadButton1" destination="YFP-BH-u8o" id="gUH-u7-GFp"/>
+                        <outlet property="pinpadButton2" destination="vlo-TB-U68" id="vtS-xE-QY3"/>
+                        <outlet property="pinpadButton3" destination="slV-HQ-RyU" id="tAP-5E-brx"/>
+                        <outlet property="pinpadButton4" destination="xpO-ZP-wa6" id="0MH-ei-weq"/>
+                        <outlet property="pinpadButton5" destination="d7z-A6-Dlh" id="bIW-XT-Q7q"/>
+                        <outlet property="pinpadButton6" destination="WDy-x6-G0S" id="jdg-Bp-8Ke"/>
+                        <outlet property="pinpadButton7" destination="tlK-kB-sXE" id="y3D-DB-xyF"/>
+                        <outlet property="pinpadButton8" destination="jfh-EQ-7va" id="Fcr-Ds-sqf"/>
+                        <outlet property="pinpadButton9" destination="hnq-Dv-NRX" id="lim-Qo-3iJ"/>
                         <outlet property="subtractButton" destination="O2p-ks-qif" id="imf-Un-WgI"/>
                     </connections>
                 </viewController>
