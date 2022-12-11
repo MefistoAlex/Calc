@@ -47,6 +47,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="opi-UE-xC9" secondAttribute="height" multiplier="1:1" id="4yt-rT-79D"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="AC"/>
                                             </button>
@@ -56,8 +57,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="GEp-jw-kFZ" secondAttribute="height" multiplier="1:1" id="CSg-Lr-LoD"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="+/-"/>
+                                                <state key="normal" title="⁺∕₋"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ir0-iC-xhb">
                                                 <rect key="frame" x="201.66666666666666" y="0.0" width="90.666666666666657" height="91"/>
@@ -65,6 +67,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ir0-iC-xhb" secondAttribute="height" multiplier="1:1" id="aPR-ET-ibF"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="%"/>
                                             </button>
@@ -74,8 +77,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="GD1-UH-HLV" secondAttribute="height" multiplier="1:1" id="4Jk-kN-PLS"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="/"/>
+                                                <state key="normal" title="÷"/>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -120,6 +124,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="zSA-lB-luS" secondAttribute="height" multiplier="1:1" id="s5h-KP-a8K"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="x"/>
                                             </button>
@@ -166,6 +171,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="O2p-ks-qif" secondAttribute="height" multiplier="1:1" id="YAM-G7-h51"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="-"/>
                                             </button>
@@ -212,6 +218,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ed4-Hr-qJs" secondAttribute="height" multiplier="1:1" id="dsG-Rj-i8a"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="+"/>
                                             </button>
@@ -249,6 +256,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xjb-Ga-z8Z" secondAttribute="height" multiplier="1:1" id="Pm3-Rd-MSf"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="="/>
                                             </button>
@@ -277,7 +285,6 @@
                         <outlet property="divideButton" destination="GD1-UH-HLV" id="zsG-6R-KPc"/>
                         <outlet property="equalButton" destination="xjb-Ga-z8Z" id="Le8-6S-qUV"/>
                         <outlet property="lcdDisplay" destination="Blj-AW-FVC" id="W6j-pI-xM7"/>
-                        <outlet property="minusButton" destination="O2p-ks-qif" id="imf-Un-WgI"/>
                         <outlet property="multiplyButton" destination="zSA-lB-luS" id="Aig-Yk-Ubq"/>
                         <outlet property="negateButton" destination="GEp-jw-kFZ" id="Qc4-QM-PCp"/>
                         <outlet property="persentageButton" destination="Ir0-iC-xhb" id="fOg-jb-uMG"/>
@@ -291,6 +298,7 @@
                         <outlet property="pinpadButton7" destination="tlK-kB-sXE" id="5YW-C3-XyP"/>
                         <outlet property="pinpadButton8" destination="jfh-EQ-7va" id="31z-Ul-9KK"/>
                         <outlet property="pinpadButton9" destination="hnq-Dv-NRX" id="e3Y-Ls-EN7"/>
+                        <outlet property="subtractButton" destination="O2p-ks-qif" id="imf-Un-WgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
