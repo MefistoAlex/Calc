@@ -273,8 +273,10 @@
                         <outlet property="addButton" destination="Ed4-Hr-qJs" id="tWc-4A-Gg1"/>
                         <outlet property="clearButton" destination="opi-UE-xC9" id="h3U-TH-lC8"/>
                         <outlet property="decimalButton" destination="bKl-Qz-4zV" id="91H-TK-ATm"/>
+                        <outlet property="displayLabel" destination="go0-Jy-c1G" id="3ia-qh-LdX"/>
                         <outlet property="divideButton" destination="GD1-UH-HLV" id="zsG-6R-KPc"/>
                         <outlet property="equalButton" destination="xjb-Ga-z8Z" id="Le8-6S-qUV"/>
+                        <outlet property="lcdDisplay" destination="Blj-AW-FVC" id="W6j-pI-xM7"/>
                         <outlet property="minusButton" destination="O2p-ks-qif" id="imf-Un-WgI"/>
                         <outlet property="multiplyButton" destination="zSA-lB-luS" id="Aig-Yk-Ubq"/>
                         <outlet property="negateButton" destination="GEp-jw-kFZ" id="Qc4-QM-PCp"/>
