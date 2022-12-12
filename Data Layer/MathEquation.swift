@@ -8,11 +8,11 @@
 import Foundation
 
 struct MathEquation {
-    enum OperationType {
-        case add
-        case subtract
-        case multiply
-        case divide
+    enum OperationType: String {
+        case add = "+"
+        case subtract = "-"
+        case multiply = "*"
+        case divide = "/"
     }
 
     var leftHandSide: Decimal
@@ -60,5 +60,12 @@ struct MathEquation {
     private func calculatePersentageValue(_ decimal: Decimal?) -> Decimal {
         guard let decimal else { return .nan }
         return decimal / 100
+    }
+
+    // MARK: - String representation
+
+    func generatePrintout() -> String {
+        guard let operation, let rigthHandSide, let result else { return "" }
+        return "\(leftHandSide.description) \(operation.rawValue) \(rigthHandSide.description) = \(result.description)"
     }
 }
