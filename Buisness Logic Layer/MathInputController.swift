@@ -25,6 +25,10 @@ struct MathInputController {
 
     var lcdDisplayText = ""
 
+    // MARK: - Is new value
+
+    private var isNewOperationValue = true
+
     // MARK: - Initialiser
 
     init() {
@@ -59,42 +63,55 @@ struct MathInputController {
 
     mutating func addPressed() {
         mathEquation.operation = .add
-        operandSide = .rightHandSide
+        changeOperationSide()
     }
 
     mutating func minusPressed() {
         mathEquation.operation = .subtract
-        operandSide = .rightHandSide
+        changeOperationSide()
     }
 
     mutating func multiplyPressed() {
         mathEquation.operation = .multiply
-        operandSide = .rightHandSide
+        changeOperationSide()
     }
 
     mutating func dividePressed() {
         mathEquation.operation = .divide
-        operandSide = .rightHandSide
+        changeOperationSide()
     }
 
     mutating func execute() {
         mathEquation.execute()
+        let result = mathEquation.result
         lcdDisplayText = mathEquation.result?.description ?? "Error"
+        mathEquation = MathEquation(leftHandSide: result ?? .zero)
+    }
+
+    private mutating func changeOperationSide() {
+        operandSide = .rightHandSide
+        isNewOperationValue = !isNewOperationValue
     }
 
     // MARK: - Number Input
 
     mutating func decimalPressed() {
+        lcdDisplayText += "."
     }
 
     mutating func numberPressed(_ number: Int) {
-        let decimalValue = Decimal(number)
-        lcdDisplayText = decimalValue.description
+        guard number >= -9, number <= 9 else { return }
+        if isNewOperationValue {
+            lcdDisplayText = String(number)
+            isNewOperationValue = !isNewOperationValue
+        } else {
+            lcdDisplayText += String(number)
+        }
         switch operandSide {
         case .leftHandSide:
-            mathEquation.leftHandSide = decimalValue
+            mathEquation.leftHandSide = Decimal(string: lcdDisplayText)!
         case .rightHandSide:
-            mathEquation.rigthHandSide = decimalValue
+            mathEquation.rigthHandSide = Decimal(string: lcdDisplayText)!
         }
     }
 }
