@@ -57,6 +57,9 @@ class CalcViewController: UIViewController {
             extraFunctionsTitleColor: "#FFFFFF"
         )
     }
+    //MARK: - Calculator Engine
+    
+    private var calculatorEngine = CalculatorEngine()
 
     // MARK: - Lifecycle
 
@@ -135,37 +138,47 @@ class CalcViewController: UIViewController {
     // MARK: - IBActions
 
     @IBAction private func clearPressed() {
+        calculatorEngine.clearPressed()
     }
 
     @IBAction private func negatePressed() {
+        calculatorEngine.negatePressed()
     }
 
     @IBAction private func percentagePressed() {
+        calculatorEngine.percentagePressed()
     }
 
     // MARK: - Operations
 
     @IBAction private func addPressed() {
+        calculatorEngine.addPressed()
     }
 
     @IBAction private func subtractPressed() {
+        calculatorEngine.subtractPressed()
     }
 
     @IBAction private func multiplyPressed() {
+        calculatorEngine.multiplyPressed()
     }
 
     @IBAction private func dividePressed() {
+        calculatorEngine.dividePressed()
     }
 
     @IBAction private func equalsPressed() {
+        calculatorEngine.equalsPressed()
     }
 
     // MARK: - Number Input
 
     @IBAction private func decimalPressed() {
+        calculatorEngine.decimalPressed()
     }
 
     @IBAction private func numberPressed(_ sender: UIButton) {
-        print(sender.tag) 
+        let number = sender.tag
+        calculatorEngine.numberPressed(number)
     }
 }
