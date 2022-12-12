@@ -28,9 +28,22 @@ struct CalculatorEngine {
     // MARK: - Extra Functions
 
     mutating func clearPressed() {
+        mathEquation = MathEquation(leftHandSide: .zero)
+        lcdDisplayText = mathEquation.leftHandSide.description
+        operationSide = .leftHandSide
     }
 
     mutating func negatePressed() {
+        switch operationSide {
+            
+        case .leftHandSide:
+            mathEquation.negateLeftHandSide()
+            lcdDisplayText = mathEquation.leftHandSide.description
+        case .rightHandSide:
+            mathEquation.negateRightHandSide()
+            lcdDisplayText = mathEquation.rigthHandSide?.description ?? "Error" 
+        }
+        
     }
 
     mutating func percentagePressed() {

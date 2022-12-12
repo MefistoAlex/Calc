@@ -14,16 +14,18 @@ struct MathEquation {
         case multiply
         case divide
     }
+
     var leftHandSide: Decimal
     var rigthHandSide: Decimal?
     var operation: OperationType?
     var result: Decimal?
-    
-    mutating func execute () {
+
+    // MARK: - Execution
+
+    mutating func execute() {
         guard let rigthHandSide, let operation else { return }
-        
+
         switch operation {
-            
         case .add:
             result = leftHandSide + rigthHandSide
         case .subtract:
@@ -31,7 +33,17 @@ struct MathEquation {
         case .multiply:
             result = leftHandSide * rigthHandSide
         case .divide:
-            result = leftHandSide / rigthHandSide 
+            result = leftHandSide / rigthHandSide
         }
+    }
+
+    // MARK: Negate
+
+    mutating func negateLeftHandSide() {
+        leftHandSide.negate()
+    }
+
+    mutating func negateRightHandSide() {
+        rigthHandSide?.negate()
     }
 }
