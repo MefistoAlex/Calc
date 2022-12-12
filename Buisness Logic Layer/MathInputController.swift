@@ -23,7 +23,12 @@ struct MathInputController {
 
     // MARK: - LCD Display
 
-    var lcdDisplayText = ""
+    var lcdDisplayText: String {
+        // TODO: add correct text formating
+        inputText.replacingOccurrences(of: ".", with: ",")
+    }
+
+    var inputText = ""
 
     // MARK: - Is new value
 
@@ -32,7 +37,7 @@ struct MathInputController {
     // MARK: - Initialiser
 
     init() {
-        lcdDisplayText = mathEquation.leftHandSide.description
+        inputText = mathEquation.leftHandSide.description
     }
 
     // MARK: - Extra Functions
@@ -41,10 +46,10 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
-            lcdDisplayText = mathEquation.leftHandSide.description
+            inputText = mathEquation.leftHandSide.description
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            lcdDisplayText = mathEquation.rigthHandSide?.description ?? "Error"
+            inputText = mathEquation.rigthHandSide?.description ?? "Error"
         }
     }
 
@@ -52,10 +57,10 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.applyPersentageToLeftHandSide()
-            lcdDisplayText = mathEquation.leftHandSide.description
+            inputText = mathEquation.leftHandSide.description
         case .rightHandSide:
             mathEquation.applyPersentageToRightHandSide()
-            lcdDisplayText = mathEquation.rigthHandSide?.description ?? "Error"
+            inputText = mathEquation.rigthHandSide?.description ?? "Error"
         }
     }
 
@@ -84,7 +89,7 @@ struct MathInputController {
     mutating func execute() {
         mathEquation.execute()
         let result = mathEquation.result
-        lcdDisplayText = mathEquation.result?.description ?? "Error"
+        inputText = mathEquation.result?.description ?? "Error"
         mathEquation = MathEquation(leftHandSide: result ?? .zero)
     }
 
@@ -96,22 +101,22 @@ struct MathInputController {
     // MARK: - Number Input
 
     mutating func decimalPressed() {
-        lcdDisplayText += "."
+        inputText += "."
     }
 
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
         if isNewOperationValue {
-            lcdDisplayText = String(number)
+            inputText = String(number)
             isNewOperationValue = !isNewOperationValue
         } else {
-            lcdDisplayText += String(number)
+            inputText += String(number)
         }
         switch operandSide {
         case .leftHandSide:
-            mathEquation.leftHandSide = Decimal(string: lcdDisplayText)!
+            mathEquation.leftHandSide = Decimal(string: inputText)!
         case .rightHandSide:
-            mathEquation.rigthHandSide = Decimal(string: lcdDisplayText)!
+            mathEquation.rigthHandSide = Decimal(string: inputText)!
         }
     }
 }
