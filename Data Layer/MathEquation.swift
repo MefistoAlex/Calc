@@ -46,4 +46,19 @@ struct MathEquation {
     mutating func negateRightHandSide() {
         rigthHandSide?.negate()
     }
+
+    // MARK: Persentage
+
+    mutating func applyPersentageToLeftHandSide() {
+        leftHandSide = calculatePersentageValue(leftHandSide)
+    }
+
+    mutating func applyPersentageToRightHandSide() {
+        rigthHandSide = calculatePersentageValue(rigthHandSide)
+    }
+
+    private func calculatePersentageValue(_ decimal: Decimal?) -> Decimal {
+        guard let decimal else { return .nan }
+        return decimal / 100
+    }
 }
