@@ -17,6 +17,10 @@ struct MathInputController {
 
     private var operandSide = OperandSide.leftHandSide
 
+    // MARK: Constants
+
+    private let decimalSymbol = Locale.current.decimalSeparator ?? "."
+
     // MARK: - Math Equation
 
     private(set) var mathEquation = MathEquation(leftHandSide: .zero)
@@ -24,8 +28,7 @@ struct MathInputController {
     // MARK: - LCD Display
 
     var lcdDisplayText: String {
-        // TODO: add correct text formating
-        inputText.replacingOccurrences(of: ".", with: ",")
+        return inputText
     }
 
     var inputText = ""
@@ -101,22 +104,37 @@ struct MathInputController {
     // MARK: - Number Input
 
     mutating func decimalPressed() {
-        inputText += "."
+        inputText = appendDecimalSeparatorIfNeededToString(inputText)
+    }
+
+    private mutating func appendDecimalSeparatorIfNeededToString(_ string: String) -> String {
+        if inputText.contains(decimalSymbol) {
+            return string
+        } else {
+            isNewOperationValue = false
+            return string + decimalSymbol
+        }
     }
 
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
         if isNewOperationValue {
             inputText = String(number)
-            isNewOperationValue = !isNewOperationValue
+            isNewOperationValue = false
         } else {
-            inputText += String(number)
+            inputText = appendNumberToString(inputText, number: number)
         }
+
         switch operandSide {
         case .leftHandSide:
-            mathEquation.leftHandSide = Decimal(string: inputText)!
+            mathEquation.leftHandSide = Decimal(string: inputText, locale: Locale.current)!
         case .rightHandSide:
-            mathEquation.rigthHandSide = Decimal(string: inputText)!
+            mathEquation.rigthHandSide = Decimal(string: inputText, locale: Locale.current)!
         }
+    }
+
+    private func appendNumberToString(_ string: String, number: Int) -> String {
+        let result = string.appending(String(number))
+        return result
     }
 }
