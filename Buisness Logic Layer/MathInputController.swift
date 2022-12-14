@@ -20,6 +20,7 @@ struct MathInputController {
     // MARK: Constants
 
     private let decimalSymbol = Locale.current.decimalSeparator ?? "."
+    private let errorMessage = "Error"
 
     // MARK: - Math Equation
 
@@ -29,12 +30,12 @@ struct MathInputController {
 
     var lcdDisplayText: String {
         let decimalLCDValue = Decimal(string: inputText.description, locale: Locale.current)
-        guard let decimalLCDValue else { return "Error" }
+        guard let decimalLCDValue else { return errorMessage }
 
         let numberFormater = NumberFormatter()
         numberFormater.numberStyle = .decimal
 
-        return numberFormater.string(for: decimalLCDValue) ?? "Error"
+        return numberFormater.string(for: decimalLCDValue) ?? errorMessage
     }
 
     var inputText = ""
@@ -58,7 +59,7 @@ struct MathInputController {
             inputText = mathEquation.leftHandSide.description
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            inputText = mathEquation.rigthHandSide?.description ?? "Error"
+            inputText = mathEquation.rigthHandSide?.description ?? errorMessage
         }
     }
 
@@ -69,7 +70,7 @@ struct MathInputController {
             inputText = mathEquation.leftHandSide.description
         case .rightHandSide:
             mathEquation.applyPersentageToRightHandSide()
-            inputText = mathEquation.rigthHandSide?.description ?? "Error"
+            inputText = mathEquation.rigthHandSide?.description ?? errorMessage
         }
     }
 
@@ -98,7 +99,7 @@ struct MathInputController {
     mutating func execute() {
         mathEquation.execute()
         let result = mathEquation.result
-        inputText = mathEquation.result?.description ?? "Error"
+        inputText = mathEquation.result?.description ?? errorMessage
         mathEquation = MathEquation(leftHandSide: result ?? .zero)
     }
 
