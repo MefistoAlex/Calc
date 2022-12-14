@@ -28,7 +28,13 @@ struct MathInputController {
     // MARK: - LCD Display
 
     var lcdDisplayText: String {
-        return inputText
+        let decimalLCDValue = Decimal(string: inputText.description, locale: Locale.current)
+        guard let decimalLCDValue else { return "Error" }
+
+        let numberFormater = NumberFormatter()
+        numberFormater.numberStyle = .decimal
+
+        return numberFormater.string(for: decimalLCDValue) ?? "Error"
     }
 
     var inputText = ""
@@ -124,13 +130,15 @@ struct MathInputController {
         } else {
             inputText = appendNumberToString(inputText, number: number)
         }
+        let decimalInput = Decimal(string: inputText, locale: Locale.current)!
 
         switch operandSide {
         case .leftHandSide:
-            mathEquation.leftHandSide = Decimal(string: inputText, locale: Locale.current)!
+            mathEquation.leftHandSide = decimalInput
         case .rightHandSide:
-            mathEquation.rigthHandSide = Decimal(string: inputText, locale: Locale.current)!
+            mathEquation.rigthHandSide = decimalInput
         }
+        inputText = decimalInput.description
     }
 
     private func appendNumberToString(_ string: String, number: Int) -> String {
