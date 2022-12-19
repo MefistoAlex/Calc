@@ -5,18 +5,28 @@
 //  Created by Alexandr Mefisto on 11.12.2022.
 //
 
-import UIKit
+import Foundation
 
-struct CalculatorTheme {
+enum StatusBarStyle: Codable {
+    case light
+    case dark
+}
+struct CalculatorTheme: Codable {
+    let id: String
+    
     let backgroundColor: String
-    let diaplayLableColor: String
-
-    let pinpadTintColor: String
+    let displayColor: String
+    
+    let extraFunctionColor: String
+    let extraFunctionTitleColor: String
+    
+    let operationColor: String
+    let operationTitleColor: String
+    let operationSelectedColor: String
+    let operationTitleSelectedColor: String
+    
+    let pinpadColor: String
     let pinpadTitleColor: String
-
-    let operationsTintColor: String
-    let operationsTitleColor: String
-
-    let extraFunctionsTintColor: String
-    let extraFunctionsTitleColor: String 
+    
+    let statusBarStyle: StatusBarStyle
 }
