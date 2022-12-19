@@ -68,6 +68,7 @@ class CalcViewController: UIViewController {
     private func decotrateView() {
         // view colors
         let backgroundColor = UIColor(hex: currentTheme.backgroundColor)
+        
         let diaplayLableColor = UIColor(hex: currentTheme.pinpadTitleColor)
         // pinpad colors
         let pinpadTintColor = UIColor(hex: currentTheme.pinpadColor)
