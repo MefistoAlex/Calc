@@ -46,15 +46,21 @@ class CalcViewController: UIViewController {
     // MARK: - Color Themes
 
     private var currentTheme: CalculatorTheme {
-        darkTheme
+        .lightBlueTheme
     }
-    private var darkTheme: CalculatorTheme {
-        CalculatorTheme.darkTheme
-    }
-   
+
     // MARK: - Calculator Engine
 
     private var calculatorEngine = CalculatorEngine()
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        switch currentTheme.statusBarStyle {
+        case .light:
+            return .lightContent
+        case .dark:
+            return .darkContent
+        }
+    }
 
     // MARK: - Lifecycle
 
@@ -68,9 +74,8 @@ class CalcViewController: UIViewController {
     private func decotrateView() {
         // view colors
         let backgroundColor = UIColor(hex: currentTheme.backgroundColor)
-        
-        let diaplayLableColor = UIColor(hex: currentTheme.pinpadTitleColor)
-        // pinpad colors
+        let diaplayLableColor = UIColor(hex: currentTheme.displayColor )
+       // pinpad colors
         let pinpadTintColor = UIColor(hex: currentTheme.pinpadColor)
         let pinpadTitleColor = UIColor(hex: currentTheme.pinpadTitleColor)
         // operations colors
