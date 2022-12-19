@@ -46,18 +46,12 @@ class CalcViewController: UIViewController {
     // MARK: - Color Themes
 
     private var currentTheme: CalculatorTheme {
-        CalculatorTheme(
-            backgroundColor: "#000000",
-            diaplayLableColor: "#FFFFFF",
-            pinpadTintColor: "#333333",
-            pinpadTitleColor: "#FFFFFF",
-            operationsTintColor: "#ff9f0a",
-            operationsTitleColor: "#FFFFFF",
-            extraFunctionsTintColor: "#a6a6a6",
-            extraFunctionsTitleColor: "#FFFFFF"
-        )
+        darkTheme
     }
-
+    private var darkTheme: CalculatorTheme {
+        CalculatorTheme.darkTheme
+    }
+   
     // MARK: - Calculator Engine
 
     private var calculatorEngine = CalculatorEngine()
@@ -74,16 +68,16 @@ class CalcViewController: UIViewController {
     private func decotrateView() {
         // view colors
         let backgroundColor = UIColor(hex: currentTheme.backgroundColor)
-        let diaplayLableColor = UIColor(hex: currentTheme.diaplayLableColor)
+        let diaplayLableColor = UIColor(hex: currentTheme.pinpadTitleColor)
         // pinpad colors
-        let pinpadTintColor = UIColor(hex: currentTheme.pinpadTintColor)
+        let pinpadTintColor = UIColor(hex: currentTheme.pinpadColor)
         let pinpadTitleColor = UIColor(hex: currentTheme.pinpadTitleColor)
         // operations colors
-        let operationsTintColor = UIColor(hex: currentTheme.operationsTintColor)
-        let operationsTitleColor = UIColor(hex: currentTheme.operationsTitleColor)
+        let operationsTintColor = UIColor(hex: currentTheme.operationColor)
+        let operationsTitleColor = UIColor(hex: currentTheme.operationTitleColor)
         // extra func colors
-        let extraFunctionsTintColor = UIColor(hex: currentTheme.extraFunctionsTintColor)
-        let extraFunctionsTitleColor = UIColor(hex: currentTheme.extraFunctionsTitleColor)
+        let extraFunctionsTintColor = UIColor(hex: currentTheme.extraFunctionColor)
+        let extraFunctionsTitleColor = UIColor(hex: currentTheme.extraFunctionTitleColor)
 
         // view setting
         view.backgroundColor = backgroundColor
