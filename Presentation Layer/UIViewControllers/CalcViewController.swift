@@ -66,16 +66,34 @@ class CalcViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        decotrateView()
+        addThemeGestureRecogniser()
+        redecotrateView()
+    }
+
+    // MARK: Gestures
+
+    private func addThemeGestureRecogniser() {
+        let themeGesture = UITapGestureRecognizer(target: self, action: #selector(themeGestureRecogniserDidTap))
+        themeGesture.numberOfTapsRequired = 2
+        lcdDisplay.addGestureRecognizer(themeGesture)
+    }
+
+    @objc private func themeGestureRecogniserDidTap(_ gesture: UITapGestureRecognizer) {
+        decorateViewWithNextTheme()
     }
 
     // MARK: - Decorate
 
-    private func decotrateView() {
+    private func decorateViewWithNextTheme() {
+        ThemeManager.shared.moveToTheNextTheme()
+        redecotrateView()
+    }
+
+    private func redecotrateView() {
         // view colors
         let backgroundColor = UIColor(hex: currentTheme.backgroundColor)
-        let diaplayLableColor = UIColor(hex: currentTheme.displayColor )
-       // pinpad colors
+        let diaplayLableColor = UIColor(hex: currentTheme.displayColor)
+        // pinpad colors
         let pinpadTintColor = UIColor(hex: currentTheme.pinpadColor)
         let pinpadTitleColor = UIColor(hex: currentTheme.pinpadTitleColor)
         // operations colors
