@@ -19,8 +19,8 @@ extension CalculatorTheme {
 
             operationColor: "#4566B6",
             operationTitleColor: "#FFFFFF",
-            operationSelectedColor: "#4566B6",
-            operationTitleSelectedColor: "#FFFFFF",
+            operationSelectedColor: "#FFFFFF",
+            operationTitleSelectedColor: "#4566B6",
 
             pinpadColor: "#1D1D1D",
             pinpadTitleColor: "#767676",
