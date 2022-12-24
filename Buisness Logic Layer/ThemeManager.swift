@@ -13,7 +13,7 @@ final class ThemeManager {
 
     private init() {
         populateArrayOfThemes()
-        loadThemeIndex()
+        loadTheme()
     }
 
     // MARK: - Data Store
@@ -41,7 +41,7 @@ final class ThemeManager {
         }
 
         savedTheme = themes[savedThemeIndex]
-        saveThemeIndex()
+        saveThemeToDisk()
     }
 
     // MARK: Array of themes
@@ -63,15 +63,18 @@ final class ThemeManager {
 
     // MARK: - Seva & Load from disk
 
-    private func loadThemeIndex() {
-        if let previousIndex = dataStore.getValue() as? Int {
-            savedThemeIndex = previousIndex
+    private func loadTheme() {
+        guard let encodedTheme = dataStore.getValue() as? Data else { return }
+        let decoder = JSONDecoder()
+        if let decodedTheme = try? decoder.decode(CalculatorTheme.self, from: encodedTheme) {
+            savedTheme = decodedTheme
         }
-
-        savedTheme = themes[savedThemeIndex]
     }
 
-    private func saveThemeIndex() {
-        dataStore.set(savedThemeIndex)
+    private func saveThemeToDisk() {
+        let encoder = JSONEncoder()
+        if let encodedTheme = try? encoder.encode(savedTheme) {
+            dataStore.set(encodedTheme)
+        }
     }
 }
