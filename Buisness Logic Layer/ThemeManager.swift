@@ -16,6 +16,10 @@ final class ThemeManager {
         loadThemeIndex()
     }
 
+    // MARK: - Data Store
+
+    private let dataStore = DataStoreManager(key: "Mefisto.com.Calc.ThemeManager.savedThemeIndex")
+
     // MARK: - Themes
 
     private(set) var themes = [CalculatorTheme]()
@@ -60,7 +64,7 @@ final class ThemeManager {
     // MARK: - Seva & Load from disk
 
     private func loadThemeIndex() {
-        if let previousIndex = UserDefaults.standard.object(forKey: "Mefisto.com.Calc.ThemeManager.savedThemeIndex") as? Int {
+        if let previousIndex = dataStore.getValue() as? Int {
             savedThemeIndex = previousIndex
         }
 
@@ -68,6 +72,6 @@ final class ThemeManager {
     }
 
     private func saveThemeIndex() {
-        UserDefaults.standard.set(savedThemeIndex, forKey: "Mefisto.com.Calc.ThemeManager.savedThemeIndex")
+        dataStore.set(savedThemeIndex)
     }
 }
