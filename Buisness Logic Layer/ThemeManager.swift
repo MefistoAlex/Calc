@@ -35,13 +35,30 @@ final class ThemeManager {
     // MARK: Next Theme
 
     func moveToTheNextTheme() {
-        savedThemeIndex += 1
-        if savedThemeIndex > themes.count - 1 {
-            savedThemeIndex = 0
+        // index of saved theme
+        let currentThemeID = currentTheme.id
+        let indexOfExistingTheme = themes.firstIndex { calculatorTheme in
+            calculatorTheme.id == currentThemeID
         }
 
-        savedTheme = themes[savedThemeIndex]
-        saveThemeToDisk()
+        // reset if something wrong
+        guard let indexOfExistingTheme else {
+            if let firstTheme = themes.first {
+                updateSystemWhithTheme(firstTheme)
+            }
+            return
+        }
+
+        // move to the next theme
+        var nextThemeIndex = indexOfExistingTheme + 1
+
+        if nextThemeIndex > themes.count - 1 {
+            nextThemeIndex = 0
+        }
+        
+        // set theme
+        let nextTheme = themes[nextThemeIndex]
+        updateSystemWhithTheme(nextTheme)
     }
 
     // MARK: Array of themes
@@ -59,6 +76,11 @@ final class ThemeManager {
             CalculatorTheme.orangeTheme,
             CalculatorTheme.washedOutTheme,
         ]
+    }
+
+    private func updateSystemWhithTheme(_ theme: CalculatorTheme) {
+        savedTheme = theme
+        saveThemeToDisk()
     }
 
     // MARK: - Seva & Load from disk
