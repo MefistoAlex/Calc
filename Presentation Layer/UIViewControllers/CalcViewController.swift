@@ -12,9 +12,8 @@ class CalcViewController: UIViewController {
 
     //  - LCDDysplay
 
-    @IBOutlet var lcdDisplay: UIView!
-    @IBOutlet var displayLabel: UILabel!
-
+    @IBOutlet var lcdDisplay: LCDDisplay!
+   
     // pin pad buttons
 
     @IBOutlet var pinpadButton0: UIButton!
@@ -119,7 +118,7 @@ class CalcViewController: UIViewController {
         // view setting
         view.backgroundColor = backgroundColor
         lcdDisplay.backgroundColor = .clear
-        displayLabel.textColor = diaplayLableColor
+        lcdDisplay.label.textColor = diaplayLableColor
 
         // buttons setting
         decoratePinPad(tintColor: pinpadTintColor, titleColor: pinpadTitleColor)
@@ -240,6 +239,6 @@ class CalcViewController: UIViewController {
     // MARK: - refresh LCDDisplay
 
     private func refreshLCDDisplay() {
-        displayLabel.text = calculatorEngine.lcdDisplayText
+        lcdDisplay.label.text = calculatorEngine.lcdDisplayText
     }
 }
