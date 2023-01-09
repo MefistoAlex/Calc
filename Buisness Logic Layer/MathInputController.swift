@@ -159,10 +159,10 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.leftHandSide = decimal
-            changeOperationSide()
         case .rightHandSide:
             mathEquation.rigthHandSide = decimal
         }
+        isNewOperationValue = false
         inputText = decimal.description
     }
 }
