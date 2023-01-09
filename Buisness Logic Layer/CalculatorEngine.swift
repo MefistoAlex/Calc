@@ -79,4 +79,13 @@ struct CalculatorEngine {
     private mutating func clearHistoryLog() {
         EquationHistoryLog = []
     }
+
+    // MARK: - Copy & Paste
+
+    mutating func pasteInNumber(from decimal: Decimal) {
+        if inputController.isCompleted {
+            inputController = MathInputController()
+        }
+        inputController.pasteInNumber(decimal)
+    }
 }

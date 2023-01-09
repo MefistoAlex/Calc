@@ -37,7 +37,6 @@ class LCDDisplay: UIView {
 
     @objc private func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            print("We have perform the long press")
             showMenu(from: gesture)
         }
     }
@@ -67,10 +66,12 @@ class LCDDisplay: UIView {
     }
 
     override func copy(_ sender: Any?) {
-        print("copy pressed")
+        UIPasteboard.general.string = label.text
     }
 
     override func paste(_ sender: Any?) {
-        print("paste pressed")
+        guard let numberToPaste = UIPasteboard.general.string?.doubleValue else { return }
+        let userInfo = ["PasteKey": numberToPaste]
+        NotificationCenter.default.post(name: Notification.Name("Mefisto.com.Calc.LCDDisplay.pasteNumber"), object: nil, userInfo: userInfo)
     }
 }

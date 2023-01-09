@@ -146,4 +146,23 @@ struct MathInputController {
         let result = string.appending(String(number))
         return result
     }
+
+    // MARK: - Computed Properties
+
+    var isCompleted: Bool {
+        return mathEquation.executed
+    }
+
+    // MARK: - Copy & Paste
+
+    mutating func pasteInNumber(_ decimal: Decimal) {
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.leftHandSide = decimal
+            changeOperationSide()
+        case .rightHandSide:
+            mathEquation.rigthHandSide = decimal
+        }
+        inputText = decimal.description
+    }
 }

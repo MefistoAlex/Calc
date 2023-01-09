@@ -13,7 +13,7 @@ class CalcViewController: UIViewController {
     //  - LCDDysplay
 
     @IBOutlet var lcdDisplay: LCDDisplay!
-   
+
     // pin pad buttons
 
     @IBOutlet var pinpadButton0: UIButton!
@@ -67,6 +67,7 @@ class CalcViewController: UIViewController {
         super.viewDidLoad()
         addThemeGestureRecogniser()
         redecotrateView()
+        registerForNotifications()
     }
 
     // MARK: Gestures
@@ -81,19 +82,20 @@ class CalcViewController: UIViewController {
         decorateViewWithNextTheme()
     }
 
-    
-    //MARK: - Select Operation Buttons
+    // MARK: - Select Operation Buttons
+
     private func deselectOperationButtons() {
         selectOperationButton(addButton, isSelected: false)
         selectOperationButton(subtractButton, isSelected: false)
         selectOperationButton(multiplyButton, isSelected: false)
-        selectOperationButton(divideButton , isSelected: false)
-        
+        selectOperationButton(divideButton, isSelected: false)
     }
+
     private func selectOperationButton(_ button: UIButton, isSelected: Bool) {
-        button.tintColor  = isSelected ? UIColor(hex: currentTheme.operationSelectedColor) : UIColor(hex: currentTheme.operationColor)
+        button.tintColor = isSelected ? UIColor(hex: currentTheme.operationSelectedColor) : UIColor(hex: currentTheme.operationColor)
         button.isSelected = isSelected
     }
+
     // MARK: - Decorate
 
     private func decorateViewWithNextTheme() {
@@ -135,7 +137,7 @@ class CalcViewController: UIViewController {
         button.tintColor = tintColor
         button.setTitleColor(titleColor, for: .normal)
         button.setTitleColor(UIColor(hex: currentTheme
-            .operationTitleSelectedColor  ), for: .selected)
+                .operationTitleSelectedColor), for: .selected)
         button.backgroundColor = .clear
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
     }
@@ -210,7 +212,7 @@ class CalcViewController: UIViewController {
 
     @IBAction private func dividePressed() {
         deselectOperationButtons()
-        selectOperationButton(divideButton , isSelected: true)
+        selectOperationButton(divideButton, isSelected: true)
         calculatorEngine.dividePressed()
         refreshLCDDisplay()
     }
@@ -240,5 +242,23 @@ class CalcViewController: UIViewController {
 
     private func refreshLCDDisplay() {
         lcdDisplay.label.text = calculatorEngine.lcdDisplayText
+    }
+
+    // MARK: - Notification
+
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didRecivedPasteNotification), name: Notification.Name("Mefisto.com.Calc.LCDDisplay.pasteNumber"), object: nil)
+    }
+
+    @objc private func didRecivedPasteNotification(notification: Notification) {
+        guard let doubleValue = notification.userInfo? ["PasteKey"] as? Double else { return }
+        pasteNumberIntoCalculator(from: Decimal(doubleValue))
+    }
+
+    // MARK: - Copy & Paste
+
+    private func pasteNumberIntoCalculator(from decimal: Decimal) {
+        calculatorEngine.pasteInNumber(from: decimal)
+        refreshLCDDisplay()
     }
 }
