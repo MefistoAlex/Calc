@@ -79,7 +79,9 @@ class CalcViewController: UIViewController {
     }
 
     @objc private func themeGestureRecogniserDidTap(_ gesture: UITapGestureRecognizer) {
+        lcdDisplay.prepareToColorThemeUpdate()
         decorateViewWithNextTheme()
+        
     }
 
     // MARK: - Select Operation Buttons

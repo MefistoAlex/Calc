@@ -55,6 +55,10 @@ class LCDDisplay: UIView {
         menu.showMenu(from: self, rect: rect)
     }
 
+    private func hideMenu() {
+        UIMenuController.shared.hideMenu(from: self)
+    }
+
     override var canBecomeFirstResponder: Bool {
         true
     }
@@ -73,5 +77,11 @@ class LCDDisplay: UIView {
         guard let numberToPaste = UIPasteboard.general.string?.doubleValue else { return }
         let userInfo = ["PasteKey": numberToPaste]
         NotificationCenter.default.post(name: Notification.Name("Mefisto.com.Calc.LCDDisplay.pasteNumber"), object: nil, userInfo: userInfo)
+    }
+
+    // MARK: - Color Themes
+
+    func prepareToColorThemeUpdate() {
+        hideMenu()
     }
 }
