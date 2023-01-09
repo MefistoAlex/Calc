@@ -56,8 +56,9 @@ struct CalculatorEngine {
 
     mutating func equalsPressed() {
         inputController.execute()
-        EquationHistoryLog.append(inputController.mathEquation)
         printEquationToDebugConsole()
+        EquationHistoryLog.append(inputController.mathEquation)
+        inputController.resetWithPreviouseResults()
     }
 
     // MARK: - Number Input

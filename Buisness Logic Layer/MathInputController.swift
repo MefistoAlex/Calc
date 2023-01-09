@@ -100,7 +100,10 @@ struct MathInputController {
         mathEquation.execute()
         let result = mathEquation.result
         inputText = mathEquation.result?.description ?? errorMessage
-        mathEquation = MathEquation(leftHandSide: result ?? .zero)
+    }
+
+    mutating func resetWithPreviouseResults() {
+        mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
     }
 
     private mutating func changeOperationSide() {
