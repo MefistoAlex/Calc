@@ -171,19 +171,22 @@ class CalcViewController: UIViewController {
         decorateButton(decimalButton, tintColor: tintColor, titleColor: titleColor)
     }
 
-    // MARK: - IBActions
+    //  
 
     @IBAction private func clearPressed() {
+        clearButton.bounce()
         calculatorEngine.clearPressed()
         refreshLCDDisplay()
     }
 
     @IBAction private func negatePressed() {
+        negateButton.bounce()
         calculatorEngine.negatePressed()
         refreshLCDDisplay()
     }
 
     @IBAction private func percentagePressed() {
+        persentageButton.bounce()
         calculatorEngine.percentagePressed()
         refreshLCDDisplay()
     }
@@ -191,6 +194,7 @@ class CalcViewController: UIViewController {
     // MARK: - Operations
 
     @IBAction private func addPressed() {
+        addButton.bounce()
         deselectOperationButtons()
         selectOperationButton(addButton, isSelected: true)
         calculatorEngine.addPressed()
@@ -198,6 +202,7 @@ class CalcViewController: UIViewController {
     }
 
     @IBAction private func subtractPressed() {
+        subtractButton.bounce()
         deselectOperationButtons()
         selectOperationButton(subtractButton, isSelected: true)
         calculatorEngine.subtractPressed()
@@ -205,6 +210,7 @@ class CalcViewController: UIViewController {
     }
 
     @IBAction private func multiplyPressed() {
+        multiplyButton.bounce()
         deselectOperationButtons()
         selectOperationButton(multiplyButton, isSelected: true)
         calculatorEngine.multiplyPressed()
@@ -212,6 +218,7 @@ class CalcViewController: UIViewController {
     }
 
     @IBAction private func dividePressed() {
+        divideButton.bounce()
         deselectOperationButtons()
         selectOperationButton(divideButton, isSelected: true)
         calculatorEngine.dividePressed()
@@ -219,6 +226,7 @@ class CalcViewController: UIViewController {
     }
 
     @IBAction private func equalsPressed() {
+        equalButton.bounce()
         deselectOperationButtons()
         calculatorEngine.equalsPressed()
         refreshLCDDisplay()
@@ -227,12 +235,14 @@ class CalcViewController: UIViewController {
     // MARK: - Number Input
 
     @IBAction private func decimalPressed() {
+        decimalButton.bounce()
         deselectOperationButtons()
         calculatorEngine.decimalPressed()
         refreshLCDDisplay()
     }
 
     @IBAction private func numberPressed(_ sender: UIButton) {
+        sender.bounce()
         deselectOperationButtons()
         let number = sender.tag
         calculatorEngine.numberPressed(number)
