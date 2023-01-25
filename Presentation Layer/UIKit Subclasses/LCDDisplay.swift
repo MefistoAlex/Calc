@@ -25,6 +25,7 @@ class LCDDisplay: UIView {
     }
 
     private func sharedInit() {
+        layer.cornerRadius = 20
         addMenuRecogniser()
     }
 
@@ -38,12 +39,14 @@ class LCDDisplay: UIView {
     @objc private func longPressGestureAction(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             showMenu(from: gesture)
+            highlightScreen()
         }
     }
 
     // MARK: - UIMenuController
 
     private func showMenu(from gesture: UILongPressGestureRecognizer) {
+        registerNotification()
         becomeFirstResponder()
         let menu = UIMenuController.shared
         guard menu.isMenuVisible == false else { return }
@@ -56,6 +59,7 @@ class LCDDisplay: UIView {
     }
 
     private func hideMenu() {
+        unhighlightScreen(animated: false)
         UIMenuController.shared.hideMenu(from: self)
     }
 
@@ -83,5 +87,43 @@ class LCDDisplay: UIView {
 
     func prepareToColorThemeUpdate() {
         hideMenu()
+    }
+
+    // MARK: - Animations
+
+    private func highlightScreen() {
+        let theme = ThemeManager.shared.currentTheme
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.backgroundColor = UIColor(hex: theme.operationColor)
+            self?.label.textColor = UIColor(hex: theme.operationTitleColor)
+        }
+    }
+
+    private func unhighlightScreen(animated: Bool) {
+        let theme = ThemeManager.shared.currentTheme
+        if animated {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) { [weak self] in
+                self?.backgroundColor = .clear
+                self?.label.textColor = UIColor(hex: theme.displayColor)
+            }
+        } else {
+            backgroundColor = .clear
+            label.textColor = UIColor(hex: theme.displayColor)
+        }
+    }
+
+    // MARK: - Notification
+
+    private func registerNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideEditMenu(_:)), name: UIMenuController.willHideMenuNotification, object: nil)
+    }
+
+    private func unregisterNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIMenuController.willHideMenuNotification, object: nil)
+    }
+
+    @objc private func willHideEditMenu(_ notification: Notification) {
+        unhighlightScreen(animated: true)
+        unregisterNotification()
     }
 }
