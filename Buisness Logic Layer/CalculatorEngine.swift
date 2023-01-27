@@ -14,7 +14,7 @@ struct CalculatorEngine {
 
     // MARK: - History
 
-    private var EquationHistoryLog = [MathEquation]()
+    private(set) var equationHistoryLog = [MathEquation]()
 
     // MARK: - LCD Display text
 
@@ -57,7 +57,7 @@ struct CalculatorEngine {
     mutating func equalsPressed() {
         inputController.execute()
         printEquationToDebugConsole()
-        EquationHistoryLog.append(inputController.mathEquation)
+        equationHistoryLog.append(inputController.mathEquation)
         inputController.resetWithPreviouseResults()
     }
 
@@ -78,7 +78,7 @@ struct CalculatorEngine {
     }
 
     private mutating func clearHistoryLog() {
-        EquationHistoryLog = []
+        equationHistoryLog = []
     }
 
     // MARK: - Copy & Paste
