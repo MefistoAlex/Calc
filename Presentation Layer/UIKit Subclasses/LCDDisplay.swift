@@ -12,6 +12,18 @@ class LCDDisplay: UIView {
 
     @IBOutlet var label: UILabel!
 
+    // MARK: - Custom Menu Items
+
+    var historyItemMenu: UIMenuItem {
+        return UIMenuItem(title: "View log", action: #selector(showHistoryLog))
+    }
+
+    // MARK: Custom Menu Item's Actions
+
+    @objc private func showHistoryLog() {
+        NotificationCenter.default.post(name: Notification.Name("Mefisto.com.Calc.LCDDisplay.showHistoryLog"), object: nil)
+    }
+
     // MARK: - Initialisers
 
     override init(frame: CGRect) {
@@ -49,6 +61,7 @@ class LCDDisplay: UIView {
         registerNotification()
         becomeFirstResponder()
         let menu = UIMenuController.shared
+        menu.menuItems = [historyItemMenu]
         guard menu.isMenuVisible == false else { return }
         let locationOfTouch = gesture.location(in: self)
         var rect = bounds
@@ -70,7 +83,8 @@ class LCDDisplay: UIView {
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return
             action == #selector(UIResponderStandardEditActions.copy(_:)) ||
-            action == #selector(UIResponderStandardEditActions.paste(_:))
+            action == #selector(UIResponderStandardEditActions.paste(_:)) ||
+            action == #selector(showHistoryLog)
     }
 
     override func copy(_ sender: Any?) {
