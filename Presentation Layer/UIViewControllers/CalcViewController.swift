@@ -283,7 +283,8 @@ class CalcViewController: UIViewController {
         let historyLogController: HistoryLogViewController = storyboard.instantiateViewController()
         historyLogController.mathEquations = calculatorEngine.equationHistoryLog
         
-        present(historyLogController, animated: true)
+        let navigationController = UINavigationController(rootViewController: historyLogController)
+        present(navigationController, animated: true)
         
     }
 }
