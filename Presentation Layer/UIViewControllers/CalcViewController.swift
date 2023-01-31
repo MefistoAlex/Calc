@@ -171,7 +171,6 @@ class CalcViewController: UIViewController {
         decorateButton(decimalButton, tintColor: tintColor, titleColor: titleColor)
     }
 
-    //  
 
     @IBAction private func clearPressed() {
         clearButton.bounce()
@@ -259,6 +258,7 @@ class CalcViewController: UIViewController {
 
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(didRecivedPasteNotification), name: Notification.Name("Mefisto.com.Calc.LCDDisplay.pasteNumber"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didRecivedPasteEquationNotification), name: Notification.Name("Mefisto.com.Calc.LCDDisplay.HistoryLogViewController.pasteMathEquation"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didRecivedHistoryLogNotification), name: Notification.Name("Mefisto.com.Calc.LCDDisplay.showHistoryLog"), object: nil)
     }
 
@@ -266,8 +266,14 @@ class CalcViewController: UIViewController {
         guard let doubleValue = notification.userInfo? ["PasteKey"] as? Double else { return }
         pasteNumberIntoCalculator(from: Decimal(doubleValue))
     }
+
+    @objc private func didRecivedPasteEquationNotification(notification: Notification) {
+        guard let equation = notification.userInfo? ["Equation"] as? MathEquation else { return }
+        pasteMathEquationIntoCalculator(equation)
+    }
+
     @objc private func didRecivedHistoryLogNotification(notification: Notification) {
-       presentHistoryLogScreen()
+        presentHistoryLogScreen()
     }
 
     // MARK: - Copy & Paste
@@ -276,15 +282,20 @@ class CalcViewController: UIViewController {
         calculatorEngine.pasteInNumber(from: decimal)
         refreshLCDDisplay()
     }
-    
-    //MARK: - History Log Screen
+
+    private func pasteMathEquationIntoCalculator(_ equation: MathEquation) {
+        calculatorEngine.pasteMathEquation(equation)
+        refreshLCDDisplay()
+    }
+
+    // MARK: - History Log Screen
+
     private func presentHistoryLogScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let historyLogController: HistoryLogViewController = storyboard.instantiateViewController()
         historyLogController.mathEquations = calculatorEngine.equationHistoryLog
-        
+
         let navigationController = UINavigationController(rootViewController: historyLogController)
         present(navigationController, animated: true)
-        
     }
 }
