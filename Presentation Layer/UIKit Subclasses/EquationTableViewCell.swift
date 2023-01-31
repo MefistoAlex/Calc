@@ -8,6 +8,11 @@
 import UIKit
 
 class EquationTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+
+    @IBOutlet private var lshLabel: UILabel!
+    @IBOutlet private var rhsLabel: UILabel!
+    @IBOutlet private var resultLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,4 +25,15 @@ class EquationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setEquation(_ equation: MathEquation) {
+        if let operation = equation.operation?.rawValue,
+           let rhs = equation.rigthHandSide?.description,
+           let result = equation.result?.description {
+           
+            lshLabel.text = equation.leftHandSide.description
+            rhsLabel.text = "\(operation) \(rhs)"
+            resultLabel.text = "= \(result)"
+        }
+        
+    }
 }
