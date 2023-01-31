@@ -18,20 +18,16 @@ class HistoryLogViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         mathEquations.count
     }
 
-   
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier:String(describing: EquationTableViewCell.self), for: indexPath)
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EquationTableViewCell.self), for: indexPath) as! EquationTableViewCell
         
-
-         return cell
-     }
-   
+        cell.setEquation(mathEquations[indexPath.row])
+        return cell
+    }
 
     /*
      // Override to support conditional editing of the table view.
