@@ -14,6 +14,17 @@ class HistoryLogViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
+    }
+
+    // MARK: - Navigation Bar
+
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+    }
+
+    @objc private func doneButtonPressed() {
+        dismiss(animated: true)
     }
 
     // MARK: - Table view data source
@@ -24,7 +35,7 @@ class HistoryLogViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EquationTableViewCell.self), for: indexPath) as! EquationTableViewCell
-        
+
         cell.setEquation(mathEquations[indexPath.row])
         return cell
     }
