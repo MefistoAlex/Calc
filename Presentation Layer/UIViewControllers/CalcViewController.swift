@@ -259,11 +259,15 @@ class CalcViewController: UIViewController {
 
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(didRecivedPasteNotification), name: Notification.Name("Mefisto.com.Calc.LCDDisplay.pasteNumber"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didRecivedHistoryLogNotification), name: Notification.Name("Mefisto.com.Calc.LCDDisplay.showHistoryLog"), object: nil)
     }
 
     @objc private func didRecivedPasteNotification(notification: Notification) {
         guard let doubleValue = notification.userInfo? ["PasteKey"] as? Double else { return }
         pasteNumberIntoCalculator(from: Decimal(doubleValue))
+    }
+    @objc private func didRecivedHistoryLogNotification(notification: Notification) {
+       presentHistoryLogScreen()
     }
 
     // MARK: - Copy & Paste
@@ -271,5 +275,15 @@ class CalcViewController: UIViewController {
     private func pasteNumberIntoCalculator(from decimal: Decimal) {
         calculatorEngine.pasteInNumber(from: decimal)
         refreshLCDDisplay()
+    }
+    
+    //MARK: - History Log Screen
+    private func presentHistoryLogScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let historyLogController: HistoryLogViewController = storyboard.instantiateViewController()
+        historyLogController.mathEquations = calculatorEngine.equationHistoryLog
+        
+        present(historyLogController, animated: true)
+        
     }
 }
