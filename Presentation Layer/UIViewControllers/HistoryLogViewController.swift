@@ -44,7 +44,7 @@ class HistoryLogViewController: UITableViewController {
         let equation = mathEquations[indexPath.row]
         let userInfo = ["Equation": equation]
         NotificationCenter.default.post(name: Notification.Name("Mefisto.com.Calc.LCDDisplay.HistoryLogViewController.pasteMathEquation"), object: nil, userInfo: userInfo)
-        
+
         dismiss(animated: true)
     }
 }

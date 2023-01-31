@@ -171,7 +171,6 @@ class CalcViewController: UIViewController {
         decorateButton(decimalButton, tintColor: tintColor, titleColor: titleColor)
     }
 
-
     @IBAction private func clearPressed() {
         clearButton.bounce()
         calculatorEngine.clearPressed()
