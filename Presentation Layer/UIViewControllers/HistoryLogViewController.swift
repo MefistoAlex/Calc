@@ -15,6 +15,7 @@ class HistoryLogViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        decorateView()
     }
 
     // MARK: - Navigation Bar
@@ -37,6 +38,8 @@ class HistoryLogViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EquationTableViewCell.self), for: indexPath) as! EquationTableViewCell
 
         cell.setEquation(mathEquations[indexPath.row])
+        let theme = ThemeManager.shared.currentTheme
+        cell.decorateFromColorTheme(theme)
         return cell
     }
 
@@ -46,5 +49,21 @@ class HistoryLogViewController: UITableViewController {
         NotificationCenter.default.post(name: Notification.Name("Mefisto.com.Calc.LCDDisplay.HistoryLogViewController.pasteMathEquation"), object: nil, userInfo: userInfo)
 
         dismiss(animated: true)
+    }
+
+    // MARK: - Decorate
+
+    private func decorateView() {
+        let theme = ThemeManager.shared.currentTheme
+        view.backgroundColor = UIColor(hex: theme.backgroundColor)
+        view.tintColor = UIColor(hex: theme.displayColor)
+        tableView.separatorColor = UIColor(hex: theme.displayColor)
+        navigationController?.navigationBar.tintColor = UIColor(hex: theme.displayColor)
+        switch theme.statusBarStyle {
+        case .light:
+            tableView.indicatorStyle = .white
+        case .dark:
+            tableView.indicatorStyle = .black
+        }
     }
 }
