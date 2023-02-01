@@ -29,11 +29,17 @@ class EquationTableViewCell: UITableViewCell {
         if let operation = equation.operation?.rawValue,
            let rhs = equation.rigthHandSide?.description,
            let result = equation.result?.description {
-           
             lshLabel.text = equation.leftHandSide.description
             rhsLabel.text = "\(operation) \(rhs)"
             resultLabel.text = "= \(result)"
         }
-        
+    }
+
+    // MARK: - Decorate
+
+    func decorateFromColorTheme(_ theme: CalculatorTheme) {
+        backgroundColor = UIColor(hex: theme.backgroundColor)
+        selectedBackgroundView?.backgroundColor = UIColor(hex: theme.operationColor)
+        tintColor = UIColor(hex: theme.displayColor)
     }
 }
