@@ -127,6 +127,9 @@ class CalcViewController: UIViewController {
         decoratePinPad(tintColor: pinpadTintColor, titleColor: pinpadTitleColor)
         decorateOperations(tintColor: operationsTintColor, titleColor: operationsTitleColor)
         decorateExtraFunctions(tintColor: extraFunctionsTintColor, titleColor: extraFunctionsTitleColor)
+
+        // status bar
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     private func decorateButton(_ button: UIButton, tintColor: UIColor?, titleColor: UIColor?, isSliced: Bool = false) {
