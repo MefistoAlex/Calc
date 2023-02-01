@@ -39,7 +39,11 @@ class EquationTableViewCell: UITableViewCell {
 
     func decorateFromColorTheme(_ theme: CalculatorTheme) {
         backgroundColor = UIColor(hex: theme.backgroundColor)
+        selectedBackgroundView = UIView()
         selectedBackgroundView?.backgroundColor = UIColor(hex: theme.operationColor)
+        lshLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        rhsLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        resultLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
         tintColor = UIColor(hex: theme.displayColor)
     }
 }
