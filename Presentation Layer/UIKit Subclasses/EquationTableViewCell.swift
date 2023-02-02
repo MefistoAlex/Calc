@@ -13,16 +13,18 @@ class EquationTableViewCell: UITableViewCell {
     @IBOutlet private var lshLabel: UILabel!
     @IBOutlet private var rhsLabel: UILabel!
     @IBOutlet private var resultLabel: UILabel!
+    @IBOutlet var tickImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        tickImage.alpha = 0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if selected {
+            tickAnimation()
+        }
     }
 
     func setEquation(_ equation: MathEquation) {
@@ -44,6 +46,20 @@ class EquationTableViewCell: UITableViewCell {
         lshLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
         rhsLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
         resultLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        tickImage.tintColor = UIColor(hex: theme.backgroundColor)
         tintColor = UIColor(hex: theme.displayColor)
+    }
+
+    // MARK: - Animationc
+
+    private func tickAnimation() {
+        UIView.animate(withDuration: 0.25, delay: 0, options: []) { [weak self] in
+            self?.tickImage.alpha = 1
+            self?.tickImage.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        } completion: { [weak self] _ in
+            UIView.animate(withDuration: 0.25, delay: 0, options: []) { [weak self] in
+                self?.tickImage.transform = .identity
+            }
+        }
     }
 }
