@@ -48,7 +48,14 @@ class HistoryLogViewController: UITableViewController {
         let userInfo = ["Equation": equation]
         NotificationCenter.default.post(name: Notification.Name("Mefisto.com.Calc.LCDDisplay.HistoryLogViewController.pasteMathEquation"), object: nil, userInfo: userInfo)
 
-        dismiss(animated: true)
+        tableView.isUserInteractionEnabled = false
+        dismissWithDelay()
+    }
+
+    private func dismissWithDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
 
     // MARK: - Decorate
