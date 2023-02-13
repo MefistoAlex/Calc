@@ -93,7 +93,7 @@ struct CalculatorEngine {
     // MARK: - Debug Console
 
     private func printEquationToDebugConsole() {
-        print("Equation: " + inputController.mathEquation.generatePrintout())
+        print("Equation: " + inputController.generatePrintout())
     }
 
     private mutating func clearHistoryLog() {

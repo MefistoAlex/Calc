@@ -102,7 +102,7 @@ struct MathInputController {
     mutating func reset() {
         mathEquation = MathEquation(leftHandSide: .zero)
     }
-    
+
     mutating func resetWithPreviouseResults() {
         mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
     }
@@ -168,5 +168,9 @@ struct MathInputController {
         }
         isNewOperationValue = false
         inputText = decimal.description
+    }
+
+    func generatePrintout() -> String {
+        mathEquation.generatePrintout()
     }
 }
