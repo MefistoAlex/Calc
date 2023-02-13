@@ -29,9 +29,9 @@ class EquationTableViewCell: UITableViewCell {
 
     func setEquation(_ equation: MathEquation) {
         if let operation = equation.operation?.rawValue,
-           let rhs = equation.rigthHandSide?.description,
-           let result = equation.result?.description {
-            lshLabel.text = equation.leftHandSide.description
+           let rhs = equation.rigthHandSide?.stringDescription,
+           let result = equation.result?.stringDescription {
+            lshLabel.text = equation.leftHandSide.stringDescription
             rhsLabel.text = "\(operation) \(rhs)"
             resultLabel.text = "= \(result)"
         }
