@@ -29,7 +29,7 @@ struct MathInputController {
     // MARK: - LCD Display
 
     var lcdDisplayText: String {
-        let decimalLCDValue = Decimal(string: inputText.description, locale: Locale.current)
+        let decimalLCDValue = Decimal(string: inputText.description)
         guard let decimalLCDValue else { return errorMessage }
 
         let numberFormater = NumberFormatter()
@@ -98,9 +98,14 @@ struct MathInputController {
 
     mutating func execute() {
         mathEquation.execute()
+        let result = mathEquation.result
         inputText = mathEquation.result?.description ?? errorMessage
     }
 
+    mutating func reset() {
+        mathEquation = MathEquation(leftHandSide: .zero)
+    }
+    
     mutating func resetWithPreviouseResults() {
         mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
     }
