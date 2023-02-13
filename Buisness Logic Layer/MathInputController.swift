@@ -98,7 +98,6 @@ struct MathInputController {
 
     mutating func execute() {
         mathEquation.execute()
-        let result = mathEquation.result
         inputText = mathEquation.result?.description ?? errorMessage
     }
 
