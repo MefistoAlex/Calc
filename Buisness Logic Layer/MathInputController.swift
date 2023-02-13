@@ -32,10 +32,7 @@ struct MathInputController {
         let decimalLCDValue = Decimal(string: inputText.description)
         guard let decimalLCDValue else { return errorMessage }
 
-        let numberFormater = NumberFormatter()
-        numberFormater.numberStyle = .decimal
-
-        return numberFormater.string(for: decimalLCDValue) ?? errorMessage
+        return decimalLCDValue.stringDescription ?? errorMessage
     }
 
     var inputText = ""

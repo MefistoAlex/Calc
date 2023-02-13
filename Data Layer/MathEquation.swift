@@ -69,7 +69,11 @@ struct MathEquation {
     // MARK: - String representation
 
     func generatePrintout() -> String {
-        guard let operation, let rigthHandSide, let result else { return "" }
-        return "\(leftHandSide.description) \(operation.rawValue) \(rigthHandSide.description) = \(result.description)"
+        guard let operation,
+              let leftHandSide = leftHandSide.stringDescription,
+                let rigthHandSide = rigthHandSide?.stringDescription,
+                let result = result?.stringDescription
+        else { return "" }
+        return "\(leftHandSide) \(operation.rawValue) \(rigthHandSide) = \(result)"
     }
 }
