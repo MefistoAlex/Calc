@@ -39,47 +39,47 @@ struct CalculatorEngine {
     // MARK: - Operations
 
     mutating func addPressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
 
+        if inputController.isReadyToExecute {
+            executeMathInputController()
+        }
         inputController.addPressed()
     }
 
     mutating func subtractPressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
+        }
+
+        if inputController.isReadyToExecute {
+            executeMathInputController()
         }
 
         inputController.minusPressed()
     }
 
     mutating func multiplyPressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
+        }
+
+        if inputController.isReadyToExecute {
+            executeMathInputController()
         }
 
         inputController.multiplyPressed()
     }
 
     mutating func dividePressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
+        }
+
+        if inputController.isReadyToExecute {
+            executeMathInputController()
         }
 
         inputController.dividePressed()
