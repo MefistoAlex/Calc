@@ -125,12 +125,12 @@ struct MathInputController {
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
 
-        if isNewOperationValue {
-            inputText = String(number)
-            isNewOperationValue = false
-        } else {
-            inputText = appendNumberToString(inputText, number: number)
+        if let _ = mathEquation.operation {
+            inputText = ""
         }
+        
+        inputText = appendNumberToString(inputText, number: number)
+       
 
         let decimalInput = Decimal(string: inputText)!
 
