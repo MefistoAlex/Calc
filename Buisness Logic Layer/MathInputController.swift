@@ -30,9 +30,6 @@ struct MathInputController {
 
     var inputText = ""
 
-    // MARK: - Is new value
-
-    private var isNewOperationValue = true
 
     // MARK: - Initialiser
 
@@ -43,18 +40,13 @@ struct MathInputController {
     // MARK: - Extra Functions
 
     mutating func negatePressed() {
-        if isCompleted {
-            mathEquation.negateResult()
-            inputText = mathEquation.result?.description ?? errorMessage
-        } else {
-            switch operandSide {
-            case .leftHandSide:
-                mathEquation.negateLeftHandSide()
-                inputText = mathEquation.leftHandSide.description
-            case .rightHandSide:
-                mathEquation.negateRightHandSide()
-                inputText = mathEquation.rigthHandSide?.description ?? errorMessage
-            }
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.negateLeftHandSide()
+            inputText = mathEquation.leftHandSide.description
+        case .rightHandSide:
+            mathEquation.negateRightHandSide()
+            inputText = mathEquation.rigthHandSide?.description ?? errorMessage
         }
     }
 
@@ -98,12 +90,10 @@ struct MathInputController {
 
     mutating func reset() {
         mathEquation = MathEquation(leftHandSide: .zero)
-        operandSide = .leftHandSide
     }
 
     mutating func resetWithPreviouseResults() {
         mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
-        operandSide = .leftHandSide
     }
 
     mutating func repeatLastEquation() {
@@ -112,12 +102,10 @@ struct MathInputController {
             rigthHandSide: mathEquation.rigthHandSide,
             operation: mathEquation.operation
         )
-        operandSide = .leftHandSide
     }
 
     private mutating func changeOperationSide() {
         operandSide = .rightHandSide
-        isNewOperationValue = !isNewOperationValue
     }
 
     // MARK: - Number Input
@@ -130,19 +118,20 @@ struct MathInputController {
         if inputText.contains(decimalSymbol) {
             return string
         } else {
-            isNewOperationValue = false
             return string + decimalSymbol
         }
     }
 
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
+
         if isNewOperationValue {
             inputText = String(number)
             isNewOperationValue = false
         } else {
             inputText = appendNumberToString(inputText, number: number)
         }
+
         let decimalInput = Decimal(string: inputText)!
 
         switch operandSide {
@@ -182,7 +171,6 @@ struct MathInputController {
         case .rightHandSide:
             mathEquation.rigthHandSide = decimal
         }
-        isNewOperationValue = false
         inputText = decimal.description
     }
 

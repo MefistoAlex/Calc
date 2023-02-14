@@ -66,10 +66,7 @@ struct CalculatorEngine {
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
-
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
+        
         inputController.addPressed()
     }
 
@@ -77,11 +74,7 @@ struct CalculatorEngine {
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
-
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
+        
         inputController.minusPressed()
     }
 
@@ -89,11 +82,7 @@ struct CalculatorEngine {
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
-
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
+        
         inputController.multiplyPressed()
     }
 
@@ -101,27 +90,15 @@ struct CalculatorEngine {
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
-
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
+        
         inputController.dividePressed()
     }
 
     mutating func equalsPressed() {
-        if inputController.isCompleted {
-            inputController.repeatLastEquation()
-        }
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-    }
-
-    mutating func executeMathInputController() {
         inputController.execute()
         printEquationToDebugConsole()
         equationHistoryLog.append(inputController.mathEquation)
+        
     }
 
     // MARK: - Number Input
