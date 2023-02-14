@@ -95,7 +95,6 @@ struct MathInputController {
 
     mutating func execute() {
         mathEquation.execute()
-        let result = mathEquation.result
         inputText = mathEquation.result?.description ?? errorMessage
     }
 
@@ -105,6 +104,14 @@ struct MathInputController {
 
     mutating func resetWithPreviouseResults() {
         mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
+    }
+
+    mutating func repeatLastEquation() {
+        mathEquation = MathEquation(
+            leftHandSide: mathEquation.result ?? .zero,
+            rigthHandSide: mathEquation.rigthHandSide,
+            operation: mathEquation.operation
+        )
     }
 
     private mutating func changeOperationSide() {
@@ -155,6 +162,14 @@ struct MathInputController {
 
     var isCompleted: Bool {
         return mathEquation.executed
+    }
+
+    var isReadyToExecute: Bool {
+        if let _ = mathEquation.rigthHandSide, let _ = mathEquation.operation {
+            return true
+        } else {
+            return false
+        }
     }
 
     // MARK: - Copy & Paste
