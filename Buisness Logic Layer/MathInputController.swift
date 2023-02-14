@@ -50,18 +50,13 @@ struct MathInputController {
     // MARK: - Extra Functions
 
     mutating func negatePressed() {
-        if isCompleted {
-            mathEquation.negateResult()
-            inputText = mathEquation.result?.description ?? errorMessage
-        } else {
-            switch operandSide {
-            case .leftHandSide:
-                mathEquation.negateLeftHandSide()
-                inputText = mathEquation.leftHandSide.description
-            case .rightHandSide:
-                mathEquation.negateRightHandSide()
-                inputText = mathEquation.rigthHandSide?.description ?? errorMessage
-            }
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.negateLeftHandSide()
+            inputText = mathEquation.leftHandSide.description
+        case .rightHandSide:
+            mathEquation.negateRightHandSide()
+            inputText = mathEquation.rigthHandSide?.description ?? errorMessage
         }
     }
 
@@ -105,12 +100,10 @@ struct MathInputController {
 
     mutating func reset() {
         mathEquation = MathEquation(leftHandSide: .zero)
-        operandSide = .leftHandSide
     }
 
     mutating func resetWithPreviouseResults() {
         mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
-        operandSide = .leftHandSide
     }
 
     mutating func repeatLastEquation() {
@@ -119,7 +112,6 @@ struct MathInputController {
             rigthHandSide: mathEquation.rigthHandSide,
             operation: mathEquation.operation
         )
-        operandSide = .leftHandSide
     }
 
     private mutating func changeOperationSide() {

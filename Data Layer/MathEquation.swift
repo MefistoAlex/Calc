@@ -51,10 +51,6 @@ struct MathEquation {
         rigthHandSide?.negate()
     }
 
-    mutating func negateResult() {
-        result?.negate()
-    }
-
     // MARK: Persentage
 
     mutating func applyPersentageToLeftHandSide() {
@@ -75,8 +71,8 @@ struct MathEquation {
     func generatePrintout() -> String {
         guard let operation,
               let leftHandSide = leftHandSide.stringDescription,
-              let rigthHandSide = rigthHandSide?.stringDescription,
-              let result = result?.stringDescription
+                let rigthHandSide = rigthHandSide?.stringDescription,
+                let result = result?.stringDescription
         else { return "" }
         return "\(leftHandSide) \(operation.rawValue) \(rigthHandSide) = \(result)"
     }
