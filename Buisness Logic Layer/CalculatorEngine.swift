@@ -16,10 +16,26 @@ struct CalculatorEngine {
 
     private(set) var equationHistoryLog = [MathEquation]()
 
+    // MARK: Constants
+
+    private let decimalSymbol = "."
+    private let errorMessage = "Error"
+
     // MARK: - LCD Display text
 
     var lcdDisplayText: String {
-        return inputController.lcdDisplayText
+        var inputText = inputController.inputText
+        let decimalSymbol = Locale.current.decimalSeparator ?? "."
+        let decimal = Decimal(string: inputText) ?? .zero
+        let resultString = decimal.stringDescription ?? errorMessage
+        
+        if let lastSymbol = inputText.popLast() {
+            if String(lastSymbol) == "." {
+                return resultString + decimalSymbol
+            }
+        }
+
+        return resultString
     }
 
     // MARK: - Extra Functions
@@ -29,10 +45,18 @@ struct CalculatorEngine {
     }
 
     mutating func negatePressed() {
+        if inputController.isCompleted {
+            inputController.resetWithPreviouseResults()
+        }
+
         inputController.negatePressed()
     }
 
     mutating func percentagePressed() {
+        if inputController.isCompleted {
+            inputController.resetWithPreviouseResults()
+        }
+
         inputController.percentagePressed()
     }
 
