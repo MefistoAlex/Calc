@@ -97,12 +97,10 @@ struct MathInputController {
 
     mutating func reset() {
         mathEquation = MathEquation(leftHandSide: .zero)
-        operandSide = .leftHandSide
     }
 
     mutating func resetWithPreviouseResults() {
         mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
-        operandSide = .leftHandSide
     }
 
     mutating func repeatLastEquation() {
@@ -111,7 +109,6 @@ struct MathInputController {
             rigthHandSide: mathEquation.rigthHandSide,
             operation: mathEquation.operation
         )
-        operandSide = .leftHandSide
     }
 
     private mutating func changeOperationSide() {
