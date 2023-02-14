@@ -29,16 +29,10 @@ struct CalculatorEngine {
     }
 
     mutating func negatePressed() {
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
         inputController.negatePressed()
     }
 
     mutating func percentagePressed() {
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
         inputController.percentagePressed()
     }
 
