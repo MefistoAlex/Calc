@@ -28,8 +28,18 @@ struct MathInputController {
 
     // MARK: - LCD Display
 
+    var lcdDisplayText: String {
+        let decimalLCDValue = Decimal(string: inputText.description)
+        guard let decimalLCDValue else { return errorMessage }
+
+        return decimalLCDValue.stringDescription ?? errorMessage
+    }
+
     var inputText = ""
 
+    // MARK: - Is new value
+
+    private var isNewOperationValue = true
 
     // MARK: - Initialiser
 
@@ -90,10 +100,12 @@ struct MathInputController {
 
     mutating func reset() {
         mathEquation = MathEquation(leftHandSide: .zero)
+        operandSide = .leftHandSide
     }
 
     mutating func resetWithPreviouseResults() {
         mathEquation = MathEquation(leftHandSide: mathEquation.result ?? .zero)
+        operandSide = .leftHandSide
     }
 
     mutating func repeatLastEquation() {
@@ -102,10 +114,12 @@ struct MathInputController {
             rigthHandSide: mathEquation.rigthHandSide,
             operation: mathEquation.operation
         )
+        operandSide = .leftHandSide
     }
 
     private mutating func changeOperationSide() {
         operandSide = .rightHandSide
+        isNewOperationValue = !isNewOperationValue
     }
 
     // MARK: - Number Input
@@ -118,20 +132,19 @@ struct MathInputController {
         if inputText.contains(decimalSymbol) {
             return string
         } else {
+            isNewOperationValue = false
             return string + decimalSymbol
         }
     }
 
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
-
-        if let _ = mathEquation.operation {
-            inputText = ""
+        if isNewOperationValue {
+            inputText = String(number)
+            isNewOperationValue = false
+        } else {
+            inputText = appendNumberToString(inputText, number: number)
         }
-        
-        inputText = appendNumberToString(inputText, number: number)
-       
-
         let decimalInput = Decimal(string: inputText)!
 
         switch operandSide {
@@ -171,6 +184,7 @@ struct MathInputController {
         case .rightHandSide:
             mathEquation.rigthHandSide = decimal
         }
+        isNewOperationValue = false
         inputText = decimal.description
     }
 
