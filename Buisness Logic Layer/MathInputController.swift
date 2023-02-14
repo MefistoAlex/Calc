@@ -19,7 +19,7 @@ struct MathInputController {
 
     // MARK: Constants
 
-    private let decimalSymbol = Locale.current.decimalSeparator ?? "."
+    private let decimalSymbol = "."
     private let errorMessage = "Error"
 
     // MARK: - Math Equation
@@ -27,13 +27,6 @@ struct MathInputController {
     private(set) var mathEquation = MathEquation(leftHandSide: .zero)
 
     // MARK: - LCD Display
-
-    var lcdDisplayText: String {
-        let decimalLCDValue = Decimal(string: inputText.description)
-        guard let decimalLCDValue else { return errorMessage }
-
-        return decimalLCDValue.stringDescription ?? errorMessage
-    }
 
     var inputText = ""
 
@@ -132,7 +125,12 @@ struct MathInputController {
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
 
-        inputText = appendNumberToString(inputText, number: number)
+        if isNewOperationValue {
+            inputText = String(number)
+            isNewOperationValue = false
+        } else {
+            inputText = appendNumberToString(inputText, number: number)
+        }
 
         let decimalInput = Decimal(string: inputText)!
 
