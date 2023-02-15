@@ -10,6 +10,8 @@ extension Decimal {
     var stringDescription: String? {
         let numberFormater = NumberFormatter()
         numberFormater.numberStyle = .decimal
+        numberFormater.maximumFractionDigits = 7
+        numberFormater.maximumIntegerDigits = 9
         return numberFormater.string(for: self)
     }
 }

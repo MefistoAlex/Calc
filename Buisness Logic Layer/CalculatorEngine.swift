@@ -150,7 +150,9 @@ struct CalculatorEngine {
         inputController = MathInputController()
         pasteInNumber(from: result)
     }
-    //MARK: - Text Output Formating
+
+    // MARK: - Text Output Formating
+
     private func formatOutput(intutString: String) -> String {
         var inputText = intutString
         if inputText == "0" {
