@@ -17,34 +17,36 @@ struct MathInputController {
 
     private var operandSide = OperandSide.leftHandSide
 
-    // MARK: Constants
-
-    private let decimalSymbol = "."
-    private let errorMessage = "Error"
-
     // MARK: - Math Equation
 
     private(set) var mathEquation = MathEquation(leftHandSide: .zero)
 
     // MARK: - LCD Display
 
-    var lcdDisplayText: String {
-        let decimalLCDValue = Decimal(string: inputText.description)
-        guard let decimalLCDValue else { return errorMessage }
-
-        return decimalLCDValue.stringDescription ?? errorMessage
-    }
-
-    var inputText = ""
+    var LCDDisplayText = ""
 
     // MARK: - Is new value
 
     private var isNewOperationValue = true
 
+    // MARK: - Computed Properties
+
+    var isCompleted: Bool {
+        return mathEquation.executed
+    }
+
+    var isReadyToExecute: Bool {
+        if let _ = mathEquation.rigthHandSide, let _ = mathEquation.operation {
+            return true
+        } else {
+            return false
+        }
+    }
+
     // MARK: - Initialiser
 
     init() {
-        inputText = mathEquation.leftHandSide.description
+        LCDDisplayText = mathEquation.leftHandSide.description
     }
 
     // MARK: - Extra Functions
@@ -53,10 +55,10 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
-            inputText = mathEquation.leftHandSide.description
+            LCDDisplayText = mathEquation.leftHandSide.description
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            inputText = mathEquation.rigthHandSide?.description ?? errorMessage
+            LCDDisplayText = mathEquation.rigthHandSide?.description ?? Constants.errorMessage
         }
     }
 
@@ -64,10 +66,10 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.applyPersentageToLeftHandSide()
-            inputText = mathEquation.leftHandSide.description
+            LCDDisplayText = mathEquation.leftHandSide.description
         case .rightHandSide:
             mathEquation.applyPersentageToRightHandSide()
-            inputText = mathEquation.rigthHandSide?.description ?? errorMessage
+            LCDDisplayText = mathEquation.rigthHandSide?.description ?? Constants.errorMessage
         }
     }
 
@@ -95,8 +97,10 @@ struct MathInputController {
 
     mutating func execute() {
         mathEquation.execute()
-        inputText = mathEquation.result?.description ?? errorMessage
+        LCDDisplayText = mathEquation.result?.description ?? Constants.errorMessage
     }
+
+    // MARK: - Reseting
 
     mutating func reset() {
         mathEquation = MathEquation(leftHandSide: .zero)
@@ -124,31 +128,35 @@ struct MathInputController {
 
     // MARK: - Number Input
 
+    // MARK: Decimal input
+
     mutating func decimalPressed() {
-        inputText = appendDecimalSeparatorIfNeededToString(inputText)
+        LCDDisplayText = appendDecimalSeparatorIfNeededToString(LCDDisplayText)
     }
 
     private mutating func appendDecimalSeparatorIfNeededToString(_ string: String) -> String {
-        if inputText.contains(decimalSymbol) {
+        if LCDDisplayText.contains(Constants.decimalSymbol) {
             return string
         } else {
             isNewOperationValue = false
-            return string + decimalSymbol
+            return string + Constants.decimalSymbol
         }
     }
 
+    // MARK: Digits input
+
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
-        if inputText == "0" && number == 0 {
+        if LCDDisplayText == "0" && number == 0 {
             return
         }
         if isNewOperationValue {
-            inputText = String(number)
+            LCDDisplayText = String(number)
             isNewOperationValue = false
         } else {
-            inputText = appendNumberToString(inputText, number: number)
+            LCDDisplayText = appendNumberToString(LCDDisplayText, number: number)
         }
-        let decimalInput = Decimal(string: inputText)!
+        let decimalInput = Decimal(string: LCDDisplayText)!
 
         switch operandSide {
         case .leftHandSide:
@@ -163,20 +171,6 @@ struct MathInputController {
         return result
     }
 
-    // MARK: - Computed Properties
-
-    var isCompleted: Bool {
-        return mathEquation.executed
-    }
-
-    var isReadyToExecute: Bool {
-        if let _ = mathEquation.rigthHandSide, let _ = mathEquation.operation {
-            return true
-        } else {
-            return false
-        }
-    }
-
     // MARK: - Copy & Paste
 
     mutating func pasteInNumber(_ decimal: Decimal) {
@@ -187,8 +181,10 @@ struct MathInputController {
             mathEquation.rigthHandSide = decimal
         }
         isNewOperationValue = false
-        inputText = decimal.description
+        LCDDisplayText = decimal.description
     }
+
+    // MARK: - Debug Printing
 
     func generatePrintout() -> String {
         mathEquation.generatePrintout()
