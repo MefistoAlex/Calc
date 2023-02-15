@@ -24,18 +24,7 @@ struct CalculatorEngine {
     // MARK: - LCD Display text
 
     var lcdDisplayText: String {
-        var inputText = inputController.inputText
-        let decimalSymbol = Locale.current.decimalSeparator ?? "."
-        let decimal = Decimal(string: inputText) ?? .zero
-        let resultString = decimal.stringDescription ?? errorMessage
-        
-        if let lastSymbol = inputText.popLast() {
-            if String(lastSymbol) == "." {
-                return resultString + decimalSymbol
-            }
-        }
-
-        return resultString
+        formatOutput(intutString: inputController.inputText)
     }
 
     // MARK: - Extra Functions
@@ -63,11 +52,10 @@ struct CalculatorEngine {
     // MARK: - Operations
 
     mutating func addPressed() {
-        
         if inputController.isReadyToExecute {
             executeMathInputController()
         }
-        
+
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
@@ -76,21 +64,18 @@ struct CalculatorEngine {
     }
 
     mutating func subtractPressed() {
-        
         if inputController.isReadyToExecute {
             executeMathInputController()
         }
-        
+
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
-
 
         inputController.minusPressed()
     }
 
     mutating func multiplyPressed() {
-        
         if inputController.isReadyToExecute {
             executeMathInputController()
         }
@@ -98,16 +83,14 @@ struct CalculatorEngine {
             inputController.resetWithPreviouseResults()
         }
 
-
         inputController.multiplyPressed()
     }
 
     mutating func dividePressed() {
-        
         if inputController.isReadyToExecute {
             executeMathInputController()
         }
-        
+
         if inputController.isCompleted {
             inputController.resetWithPreviouseResults()
         }
@@ -166,5 +149,30 @@ struct CalculatorEngine {
         guard let result = equation.result else { return }
         inputController = MathInputController()
         pasteInNumber(from: result)
+    }
+    //MARK: - Text Output Formating
+    private func formatOutput(intutString: String) -> String {
+        var inputText = intutString
+        if inputText == "0" {
+            return inputText
+        }
+        let decimalSymbol = Locale.current.decimalSeparator ?? "."
+        let decimal = Decimal(string: inputText) ?? .zero
+        var resultString = decimal.stringDescription ?? errorMessage
+        let lastSymbol = inputText.popLast()
+        if let lastSymbol {
+            if String(lastSymbol) == "." {
+                return resultString + decimalSymbol
+            }
+            if String(lastSymbol) == "0" {
+                resultString.append(decimalSymbol)
+                let strings = inputText.components(separatedBy: ["."])
+                for _ in 0 ... strings[1].count {
+                    resultString.append("0")
+                }
+                return resultString
+            }
+        }
+        return resultString
     }
 }
