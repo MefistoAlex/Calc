@@ -16,15 +16,10 @@ struct CalculatorEngine {
 
     private(set) var equationHistoryLog = [MathEquation]()
 
-    // MARK: Constants
-
-    private let decimalSymbol = "."
-    private let errorMessage = "Error"
-
     // MARK: - LCD Display text
 
     var lcdDisplayText: String {
-        formatOutput(intutString: inputController.inputText)
+        formatOutput(inputString: inputController.LCDDisplayText)
     }
 
     // MARK: - Extra Functions
@@ -72,11 +67,12 @@ struct CalculatorEngine {
     }
 
     mutating func equalsPressed() {
+        guard inputController.isReadyToExecute else { return }
         if inputController.isCompleted {
             inputController.repeatLastEquation()
         }
 
-        executeMathInputControllerIfNeeded()
+        executeMathInputController()
     }
 
     // MARK: - Reseting Math input controller
@@ -140,24 +136,34 @@ struct CalculatorEngine {
 
     // MARK: - Text Output Formating
 
-    private func formatOutput(intutString: String) -> String {
-        var inputText = intutString
+    private func formatOutput(inputString: String) -> String {
+        var inputText = inputString
         if inputText == "0" {
             return inputText
         }
         let decimalSymbol = Locale.current.decimalSeparator ?? "."
         let decimal = Decimal(string: inputText) ?? .zero
-        var resultString = decimal.stringDescription ?? errorMessage
+        var resultString = decimal.stringDescription ?? Constants.errorMessage
         let lastSymbol = inputText.popLast()
         if let lastSymbol {
             if String(lastSymbol) == "." {
                 return resultString + decimalSymbol
             }
             if String(lastSymbol) == "0" {
-                resultString.append(decimalSymbol)
-                let strings = inputText.components(separatedBy: ["."])
-                for _ in 0 ... strings[1].count {
+                let strings = inputString.components(separatedBy: ["."])
+                var floating = strings[1]
+
+                if floating.count == 0 {
                     resultString.append("0")
+                } else {
+                    var last = floating.popLast() ?? String.Element("")
+                    var zeros = ""
+
+                    while last == "0" {
+                        zeros.append(last)
+                        last = floating.popLast() ?? String.Element("")
+                    }
+                    resultString.append(zeros)
                 }
                 return resultString
             }
