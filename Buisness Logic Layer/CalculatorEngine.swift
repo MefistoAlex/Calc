@@ -34,17 +34,13 @@ struct CalculatorEngine {
     }
 
     mutating func negatePressed() {
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
+        resetFromResultIfNeeded()
 
         inputController.negatePressed()
     }
 
     mutating func percentagePressed() {
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
+        resetFromResultIfNeeded()
 
         inputController.percentagePressed()
     }
@@ -52,48 +48,25 @@ struct CalculatorEngine {
     // MARK: - Operations
 
     mutating func addPressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
+        executeMathInputControllerIfNeeded()
 
         inputController.addPressed()
     }
 
     mutating func subtractPressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
+        executeMathInputControllerIfNeeded()
 
         inputController.minusPressed()
     }
 
     mutating func multiplyPressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
+        executeMathInputControllerIfNeeded()
 
         inputController.multiplyPressed()
     }
 
     mutating func dividePressed() {
-        if inputController.isReadyToExecute {
-            executeMathInputController()
-        }
-
-        if inputController.isCompleted {
-            inputController.resetWithPreviouseResults()
-        }
+        executeMathInputControllerIfNeeded()
 
         inputController.dividePressed()
     }
@@ -102,9 +75,23 @@ struct CalculatorEngine {
         if inputController.isCompleted {
             inputController.repeatLastEquation()
         }
+
+        executeMathInputControllerIfNeeded()
+    }
+
+    // MARK: - Reseting Math input controller
+
+    private mutating func resetFromResultIfNeeded() {
+        if inputController.isCompleted {
+            inputController.resetWithPreviouseResults()
+        }
+    }
+
+    private mutating func executeMathInputControllerIfNeeded() {
         if inputController.isReadyToExecute {
             executeMathInputController()
         }
+        resetFromResultIfNeeded()
     }
 
     mutating func executeMathInputController() {
