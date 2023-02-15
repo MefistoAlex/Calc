@@ -139,6 +139,9 @@ struct MathInputController {
 
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
+        if inputText == "0" && number == 0 {
+            return
+        }
         if isNewOperationValue {
             inputText = String(number)
             isNewOperationValue = false
@@ -153,7 +156,6 @@ struct MathInputController {
         case .rightHandSide:
             mathEquation.rigthHandSide = decimalInput
         }
-        inputText = decimalInput.description
     }
 
     private func appendNumberToString(_ string: String, number: Int) -> String {
